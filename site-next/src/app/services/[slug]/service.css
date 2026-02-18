@@ -1,0 +1,281 @@
+.capes-service__hero {
+  padding: var(--space-3xl) 0 var(--space-xl);
+  background: linear-gradient(165deg, var(--color-white) 40%, #F0F2FF 100%);
+}
+
+.capes-service__back {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-royal-blue);
+  margin-bottom: var(--space-xl);
+  transition: color var(--duration-fast);
+}
+
+.capes-service__back:hover {
+  color: var(--color-navy);
+}
+
+.capes-service__number {
+  display: inline-block;
+  font-family: 'Industry', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-royal-blue);
+  margin-bottom: var(--space-sm);
+}
+
+.capes-service__title {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  color: var(--color-navy);
+  margin-bottom: var(--space-md);
+}
+
+.capes-service__description {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--color-gray-600);
+  max-width: 720px;
+}
+
+/* Problem Statement */
+.capes-service__problem {
+  padding: var(--space-2xl) 0;
+  border-bottom: 1px solid var(--color-gray-100);
+}
+
+.capes-service__problem-inner {
+  max-width: 720px;
+  padding: var(--space-xl);
+  background: var(--color-gray-100);
+  border-left: 4px solid var(--color-royal-blue);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.capes-service__problem-label {
+  display: block;
+  font-family: 'Industry', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-royal-blue);
+  margin-bottom: var(--space-sm);
+}
+
+.capes-service__problem-text {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--color-gray-700);
+  font-style: italic;
+}
+
+/* Capabilities */
+.capes-service__capabilities {
+  padding: var(--space-2xl) 0;
+  border-bottom: 1px solid var(--color-gray-100);
+}
+
+.capes-service__section-title {
+  font-family: 'Industry', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-gray-400);
+  margin-bottom: var(--space-lg);
+}
+
+.capes-service__capabilities-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.capes-service__capability-tag {
+  display: inline-block;
+  padding: 8px 18px;
+  border-radius: 24px;
+  background: var(--color-gray-100);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-gray-700);
+  transition: all var(--duration-fast);
+}
+
+.capes-service__capability-tag:hover {
+  background: var(--color-navy);
+  color: var(--color-white);
+}
+
+/* Proof Points */
+.capes-service__proof {
+  padding: var(--space-2xl) 0;
+  border-bottom: 1px solid var(--color-gray-100);
+}
+
+.capes-service__proof-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+
+.capes-service__proof-card {
+  padding: var(--space-lg);
+  background: var(--color-navy);
+  border-radius: var(--radius-sm);
+  color: var(--color-white);
+  text-align: center;
+}
+
+.capes-service__proof-value {
+  display: block;
+  font-family: 'Industry', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+.capes-service__proof-label {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Related Work */
+.capes-service__related {
+  padding: var(--space-2xl) 0;
+  border-bottom: 1px solid var(--color-gray-100);
+}
+
+.capes-service__related-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+
+.capes-service__related-card {
+  transition: transform var(--duration-fast);
+}
+
+.capes-service__related-card:hover {
+  transform: translateY(-2px);
+}
+
+.capes-service__related-img {
+  width: 100%;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  background: linear-gradient(135deg, var(--color-gray-100) 0%, var(--color-gray-200) 100%);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-sm);
+}
+
+.capes-service__related-card h4 {
+  font-size: 1rem;
+  color: var(--color-navy);
+  margin-bottom: 2px;
+}
+
+.capes-service__related-card p {
+  font-size: 13px;
+  color: var(--color-gray-500);
+}
+
+/* CTA */
+.capes-service__cta {
+  padding: var(--space-2xl) 0;
+  text-align: center;
+}
+
+.capes-service__cta-title {
+  font-size: 1.5rem;
+  color: var(--color-navy);
+  margin-bottom: var(--space-sm);
+}
+
+.capes-service__cta-text {
+  color: var(--color-gray-500);
+  margin-bottom: var(--space-lg);
+}
+
+.capes-service__cta-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 14px 32px;
+  background: var(--color-royal-blue);
+  color: var(--color-white);
+  border-radius: var(--radius-sm);
+  font-family: 'Industry', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition: all var(--duration-fast);
+}
+
+.capes-service__cta-btn:hover {
+  background: var(--color-navy);
+  transform: translateY(-2px);
+}
+
+/* All Services Nav */
+.capes-service__all {
+  padding: var(--space-2xl) 0;
+  border-top: 1px solid var(--color-gray-100);
+}
+
+.capes-service__all-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.capes-service__all-link {
+  display: block;
+  padding: var(--space-md);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-gray-200);
+  transition: all var(--duration-fast);
+}
+
+.capes-service__all-link:hover {
+  border-color: var(--color-royal-blue);
+  transform: translateY(-2px);
+}
+
+.capes-service__all-link--active {
+  border-color: var(--color-royal-blue);
+  background: rgba(51, 86, 255, 0.04);
+}
+
+.capes-service__all-number {
+  display: block;
+  font-family: 'Industry', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-royal-blue);
+  margin-bottom: 4px;
+}
+
+.capes-service__all-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-navy);
+}
+
+@media (max-width: 767px) {
+  .capes-service__proof-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .capes-service__related-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .capes-service__all-grid {
+    grid-template-columns: 1fr;
+  }
+}

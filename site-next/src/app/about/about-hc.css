@@ -1,0 +1,259 @@
+/* =============================================
+   About Page — Handcrafted Version
+   Cinematic narrative storytelling, dark theme
+   ============================================= */
+
+/* Hero */
+.hc-about__hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-black);
+  color: var(--color-white);
+  text-align: center;
+  overflow: hidden;
+}
+
+.hc-about__hero-title {
+  font-family: 'Industry', sans-serif;
+  font-size: clamp(4rem, 12vw, 10rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 0.9;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.06);
+  user-select: none;
+}
+
+.hc-about__hero-subtitle {
+  margin-top: var(--space-lg);
+  font-family: 'Satoshi', sans-serif;
+  font-size: clamp(0.875rem, 1.5vw, 1.125rem);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Acts — Full-viewport narrative sections */
+.hc-about__act {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: var(--color-black);
+  color: var(--color-white);
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.hc-about__act-inner {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--space-4xl) var(--grid-gutter);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3xl);
+  align-items: center;
+}
+
+.hc-about__act-number {
+  font-family: 'Industry', sans-serif;
+  font-size: clamp(8rem, 20vw, 16rem);
+  font-weight: 900;
+  line-height: 0.85;
+  color: rgba(255, 255, 255, 0.04);
+  user-select: none;
+}
+
+.hc-about__act-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.hc-about__act-label {
+  font-family: 'Industry', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--color-royal-blue);
+  opacity: 0.7;
+}
+
+.hc-about__act-title {
+  font-family: 'Industry', sans-serif;
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1.05;
+  color: var(--color-white);
+}
+
+.hc-about__act-text {
+  font-size: clamp(0.95rem, 1.2vw, 1.125rem);
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.5);
+  max-width: 520px;
+}
+
+/* Leadership section */
+.hc-about__leadership {
+  background: var(--color-black);
+  color: var(--color-white);
+  padding: var(--space-4xl) 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.hc-about__leadership-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--grid-gutter);
+}
+
+.hc-about__leadership-label {
+  display: block;
+  font-family: 'Industry', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.3);
+  margin-bottom: var(--space-xl);
+  text-align: center;
+}
+
+.hc-about__leadership-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-2xl);
+}
+
+.hc-about__leader {
+  padding: var(--space-2xl);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-sm);
+  transition: border-color var(--duration-normal) var(--ease-default);
+}
+
+.hc-about__leader:hover {
+  border-color: rgba(51, 86, 255, 0.3);
+}
+
+.hc-about__leader-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(51, 86, 255, 0.1) 100%);
+  margin-bottom: var(--space-xl);
+}
+
+.hc-about__leader-name {
+  font-family: 'Industry', sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--color-white);
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.hc-about__leader-role {
+  display: block;
+  font-family: 'Industry', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-royal-blue);
+  margin-bottom: var(--space-lg);
+}
+
+.hc-about__leader-bio {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* Stats strip */
+.hc-about__stats {
+  background: var(--color-black);
+  padding: var(--space-3xl) 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.hc-about__stats-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--grid-gutter);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-lg);
+}
+
+.hc-about__stat {
+  text-align: center;
+  padding: var(--space-lg) 0;
+}
+
+.hc-about__stat-value {
+  display: block;
+  font-family: 'Industry', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 900;
+  line-height: 1;
+  color: var(--color-white);
+  margin-bottom: var(--space-xs);
+}
+
+.hc-about__stat-label {
+  font-family: 'Industry', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* =============================================
+   Responsive
+   ============================================= */
+
+@media (max-width: 1023px) {
+  .hc-about__act-inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  .hc-about__act-number {
+    font-size: clamp(6rem, 15vw, 10rem);
+  }
+
+  .hc-about__leadership-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hc-about__stats-inner {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .hc-about__act {
+    min-height: auto;
+    padding: var(--space-3xl) 0;
+  }
+
+  .hc-about__act-inner {
+    padding: var(--space-2xl) var(--grid-gutter);
+  }
+
+  .hc-about__stats-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+  }
+}

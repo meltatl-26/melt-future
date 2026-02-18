@@ -1,0 +1,152 @@
+.capes-cta {
+  background: var(--color-navy);
+  color: var(--color-white);
+  padding: var(--space-4xl) 0;
+}
+
+.capes-cta__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+}
+
+.capes-cta__header {
+  text-align: center;
+}
+
+.capes-cta__title {
+  font-family: 'Industry', sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--color-white);
+  margin: 0 0 var(--space-sm) 0;
+}
+
+.capes-cta__subtitle {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+}
+
+/* Grid */
+.capes-cta__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+
+/* Cards — glass effect */
+.capes-cta__card {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  transition: background var(--duration-fast) var(--ease-default),
+              border-color var(--duration-fast) var(--ease-default);
+}
+
+.capes-cta__card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.capes-cta__card-title {
+  font-family: 'Industry', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--color-white);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.capes-cta__card-desc {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  flex: 1;
+}
+
+/* Lime button */
+.capes-cta__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  background: var(--color-lime);
+  color: var(--color-black);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: 'Industry', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-default);
+  white-space: nowrap;
+}
+
+.capes-cta__btn:hover {
+  background: #e6ff33;
+  transform: translateY(-2px);
+}
+
+/* Newsletter form */
+.capes-cta__form {
+  display: flex;
+  gap: var(--space-xs);
+}
+
+.capes-cta__input {
+  flex: 1;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-sm);
+  color: var(--color-white);
+  font-family: 'Satoshi', sans-serif;
+  font-size: 0.875rem;
+  outline: none;
+  transition: border-color var(--duration-fast) var(--ease-default);
+}
+
+.capes-cta__input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.capes-cta__input:focus {
+  border-color: var(--color-lime);
+}
+
+/* Responsive */
+@media (max-width: 1023px) {
+  .capes-cta__grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .capes-cta {
+    padding: var(--space-3xl) 0;
+  }
+
+  .capes-cta__card {
+    padding: var(--space-lg);
+  }
+
+  .capes-cta__form {
+    flex-direction: column;
+  }
+}

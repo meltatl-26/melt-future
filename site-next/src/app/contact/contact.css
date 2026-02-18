@@ -1,0 +1,306 @@
+/* =============================================
+   Contact Page — Capes Version
+   ============================================= */
+
+.capes-contact {
+  padding: var(--space-4xl) 0;
+  min-height: 100vh;
+}
+
+/* Hero */
+.capes-contact__hero {
+  margin-bottom: var(--space-3xl);
+  padding-bottom: var(--space-2xl);
+  border-bottom: 1px solid var(--color-gray-200);
+}
+
+.capes-contact__label {
+  display: block;
+  font-family: 'Industry', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-royal-blue);
+  margin-bottom: var(--space-sm);
+}
+
+.capes-contact__title {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  color: var(--color-navy);
+  margin-bottom: var(--space-md);
+}
+
+.capes-contact__subtitle {
+  font-size: 1.15rem;
+  color: var(--color-gray-600);
+  max-width: 560px;
+  line-height: 1.6;
+}
+
+/* Layout */
+.capes-contact__layout {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: var(--space-3xl);
+  align-items: start;
+}
+
+/* Form */
+.capes-contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.capes-contact__form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+}
+
+.capes-contact__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.capes-contact__field--full {
+  grid-column: 1 / -1;
+}
+
+.capes-contact__field label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-gray-700);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.capes-contact__field label .capes-contact__optional {
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--color-gray-400);
+  font-size: 12px;
+}
+
+.capes-contact__field input,
+.capes-contact__field select,
+.capes-contact__field textarea {
+  padding: 12px 16px;
+  border: 1px solid var(--color-gray-300);
+  border-radius: var(--radius-sm);
+  font-family: 'Satoshi', system-ui, sans-serif;
+  font-size: 15px;
+  color: var(--color-black);
+  background: var(--color-white);
+  transition: border-color var(--duration-fast) var(--ease-default),
+              box-shadow var(--duration-fast) var(--ease-default);
+  outline: none;
+}
+
+.capes-contact__field input:focus,
+.capes-contact__field select:focus,
+.capes-contact__field textarea:focus {
+  border-color: var(--color-royal-blue);
+  box-shadow: 0 0 0 3px rgba(51, 86, 255, 0.12);
+}
+
+.capes-contact__field input::placeholder,
+.capes-contact__field textarea::placeholder {
+  color: var(--color-gray-400);
+}
+
+.capes-contact__field select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23737373' d='M1.41 0L6 4.58 10.59 0 12 1.41l-6 6-6-6z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+}
+
+.capes-contact__field textarea {
+  resize: vertical;
+  min-height: 140px;
+  line-height: 1.6;
+}
+
+.capes-contact__submit {
+  align-self: flex-start;
+  padding: 14px 36px;
+  border-radius: var(--radius-sm);
+  background: var(--color-navy);
+  color: var(--color-white);
+  font-family: 'Industry', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: background var(--duration-fast) var(--ease-default),
+              transform var(--duration-fast) var(--ease-default);
+}
+
+.capes-contact__submit:hover {
+  background: var(--color-royal-blue);
+  transform: translateY(-1px);
+}
+
+.capes-contact__submit:active {
+  transform: translateY(0);
+}
+
+.capes-contact__submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Status messages */
+.capes-contact__status {
+  padding: var(--space-md);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.capes-contact__status--success {
+  background: #E8F5E9;
+  color: #2E7D32;
+  border: 1px solid #C8E6C9;
+}
+
+.capes-contact__status--error {
+  background: #FFEBEE;
+  color: #C62828;
+  border: 1px solid #FFCDD2;
+}
+
+/* Sidebar */
+.capes-contact__sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.capes-contact__info-block {
+  padding: var(--space-xl);
+  background: var(--color-gray-100);
+  border-radius: var(--radius-md);
+}
+
+.capes-contact__info-heading {
+  font-size: 1rem;
+  color: var(--color-navy);
+  margin-bottom: var(--space-lg);
+}
+
+.capes-contact__info-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  list-style: none;
+}
+
+.capes-contact__info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.capes-contact__info-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-gray-400);
+}
+
+.capes-contact__info-value {
+  font-size: 15px;
+  color: var(--color-gray-700);
+  font-weight: 500;
+}
+
+.capes-contact__info-value a {
+  color: var(--color-royal-blue);
+  transition: color var(--duration-fast);
+}
+
+.capes-contact__info-value a:hover {
+  color: var(--color-navy);
+}
+
+/* Scoper CTA */
+.capes-contact__scoper {
+  padding: var(--space-xl);
+  background: var(--color-navy);
+  border-radius: var(--radius-md);
+  color: var(--color-white);
+}
+
+.capes-contact__scoper-heading {
+  font-size: 1rem;
+  color: var(--color-white);
+  margin-bottom: var(--space-sm);
+}
+
+.capes-contact__scoper-text {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: var(--space-lg);
+}
+
+.capes-contact__scoper-link {
+  display: inline-block;
+  padding: 10px 24px;
+  border-radius: var(--radius-sm);
+  background: var(--color-royal-blue);
+  color: var(--color-white);
+  font-family: 'Industry', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition: background var(--duration-fast) var(--ease-default);
+}
+
+.capes-contact__scoper-link:hover {
+  background: #4A6AFF;
+}
+
+/* Responsive — Tablet */
+@media (max-width: 1023px) {
+  .capes-contact__layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+
+  .capes-contact__sidebar {
+    flex-direction: row;
+    gap: var(--space-lg);
+  }
+
+  .capes-contact__info-block,
+  .capes-contact__scoper {
+    flex: 1;
+  }
+}
+
+/* Responsive — Mobile */
+@media (max-width: 767px) {
+  .capes-contact__form-row {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .capes-contact__sidebar {
+    flex-direction: column;
+  }
+
+  .capes-contact__submit {
+    width: 100%;
+    text-align: center;
+  }
+}

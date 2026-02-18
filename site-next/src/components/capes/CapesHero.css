@@ -1,0 +1,128 @@
+.capes-hero {
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(165deg, var(--color-white) 60%, #F0F2FF 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.capes-hero__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  padding-top: var(--space-4xl);
+  padding-bottom: var(--space-4xl);
+}
+
+.capes-hero__content {
+  max-width: 800px;
+}
+
+.capes-hero__headline {
+  transition: opacity var(--duration-fast) var(--ease-default),
+              transform var(--duration-fast) var(--ease-default);
+}
+
+.capes-hero__headline--exit {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+.capes-hero__headline h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.05;
+  color: var(--color-navy);
+  margin-bottom: var(--space-lg);
+}
+
+.capes-hero__line {
+  display: block;
+}
+
+.capes-hero__line--accent {
+  color: var(--color-royal-blue);
+}
+
+.capes-hero__sub {
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  line-height: 1.6;
+  color: var(--color-gray-600);
+  max-width: 580px;
+  margin-bottom: var(--space-xl);
+}
+
+.capes-hero__actions {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.capes-hero__btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 14px 32px;
+  border-radius: var(--radius-lg);
+  font-family: 'Industry', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition: all var(--duration-fast) var(--ease-default);
+}
+
+.capes-hero__btn--primary {
+  background: var(--color-navy);
+  color: var(--color-white);
+}
+
+.capes-hero__btn--primary:hover {
+  background: var(--color-royal-blue);
+  transform: translateY(-2px);
+}
+
+.capes-hero__btn--secondary {
+  background: transparent;
+  color: var(--color-navy);
+  border: 2px solid var(--color-navy);
+}
+
+.capes-hero__btn--secondary:hover {
+  background: var(--color-navy);
+  color: var(--color-white);
+  transform: translateY(-2px);
+}
+
+.capes-hero__indicators {
+  display: flex;
+  gap: 8px;
+}
+
+.capes-hero__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-gray-300);
+  transition: all var(--duration-fast) var(--ease-default);
+}
+
+.capes-hero__dot--active {
+  background: var(--color-royal-blue);
+  width: 24px;
+  border-radius: 4px;
+}
+
+@media (max-width: 767px) {
+  .capes-hero {
+    min-height: 70vh;
+  }
+
+  .capes-hero__actions {
+    flex-direction: column;
+  }
+
+  .capes-hero__btn {
+    justify-content: center;
+    width: 100%;
+  }
+}

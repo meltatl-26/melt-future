@@ -1,0 +1,296 @@
+/* =============================================
+   Scoper Page — Handcrafted Version
+   Conversational flow, one question at a time
+   ============================================= */
+
+.hc-scoper {
+  min-height: 100vh;
+  background: var(--color-black);
+  color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hc-scoper__container {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--space-4xl) var(--grid-gutter);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+  justify-content: center;
+}
+
+/* Progress dots */
+.hc-scoper__progress {
+  display: flex;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-3xl);
+}
+
+.hc-scoper__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: all var(--duration-normal) var(--ease-default);
+}
+
+.hc-scoper__dot--active {
+  background: var(--color-white);
+  transform: scale(1.3);
+}
+
+.hc-scoper__dot--done {
+  background: var(--color-royal-blue);
+}
+
+/* Question area */
+.hc-scoper__question {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all var(--duration-slow) var(--ease-default);
+  width: 100%;
+}
+
+.hc-scoper__question-label {
+  display: block;
+  font-family: 'Industry', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: rgba(255, 255, 255, 0.25);
+  margin-bottom: var(--space-lg);
+}
+
+.hc-scoper__question-text {
+  font-family: 'Industry', sans-serif;
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1.1;
+  color: var(--color-white);
+  margin-bottom: var(--space-2xl);
+}
+
+/* Visual option grid */
+.hc-scoper__options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
+  width: 100%;
+  margin-bottom: var(--space-2xl);
+}
+
+.hc-scoper__option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xl) var(--space-lg);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-default);
+  text-align: center;
+  color: var(--color-white);
+}
+
+.hc-scoper__option:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.hc-scoper__option--selected {
+  border-color: var(--color-royal-blue);
+  background: rgba(51, 86, 255, 0.06);
+}
+
+.hc-scoper__option-title {
+  font-family: 'Industry', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.hc-scoper__option-desc {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.35);
+  line-height: 1.4;
+}
+
+/* Form fields (for contact info step) */
+.hc-scoper__fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto var(--space-2xl);
+  text-align: left;
+}
+
+.hc-scoper__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.hc-scoper__field label {
+  font-family: 'Industry', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.hc-scoper__field input,
+.hc-scoper__field textarea {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--color-white);
+  font-family: 'Satoshi', sans-serif;
+  font-size: 1rem;
+  padding: var(--space-sm) 0;
+  outline: none;
+  transition: border-color var(--duration-fast) var(--ease-default);
+  width: 100%;
+  border-radius: 0;
+  -webkit-appearance: none;
+}
+
+.hc-scoper__field input::placeholder,
+.hc-scoper__field textarea::placeholder {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.hc-scoper__field input:focus,
+.hc-scoper__field textarea:focus {
+  border-bottom-color: var(--color-royal-blue);
+}
+
+.hc-scoper__field textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+/* Navigation */
+.hc-scoper__nav {
+  display: flex;
+  gap: var(--space-lg);
+  align-items: center;
+  justify-content: center;
+}
+
+.hc-scoper__btn {
+  font-family: 'Industry', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-default);
+}
+
+.hc-scoper__btn--back {
+  color: rgba(255, 255, 255, 0.35);
+  background: transparent;
+  border: none;
+  padding: var(--space-md) var(--space-lg);
+}
+
+.hc-scoper__btn--back:hover {
+  color: var(--color-white);
+}
+
+.hc-scoper__btn--next {
+  color: var(--color-white);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: var(--space-md) var(--space-2xl);
+}
+
+.hc-scoper__btn--next:hover:not(:disabled) {
+  border-color: var(--color-white);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.hc-scoper__btn--next:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
+/* Success state */
+.hc-scoper__success {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-4xl) var(--grid-gutter);
+}
+
+.hc-scoper__success-title {
+  font-family: 'Industry', sans-serif;
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 0.95;
+  color: var(--color-white);
+  margin-bottom: var(--space-lg);
+}
+
+.hc-scoper__success-text {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.4);
+  max-width: 480px;
+  margin-bottom: var(--space-2xl);
+}
+
+.hc-scoper__success-link {
+  font-family: 'Industry', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.5);
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+  transition: all var(--duration-fast) var(--ease-default);
+}
+
+.hc-scoper__success-link:hover {
+  color: var(--color-white);
+  border-bottom-color: var(--color-royal-blue);
+}
+
+/* =============================================
+   Responsive
+   ============================================= */
+
+@media (max-width: 767px) {
+  .hc-scoper__options {
+    grid-template-columns: 1fr;
+  }
+
+  .hc-scoper__nav {
+    flex-direction: column-reverse;
+    gap: var(--space-md);
+  }
+
+  .hc-scoper__btn--next {
+    width: 100%;
+    text-align: center;
+  }
+}

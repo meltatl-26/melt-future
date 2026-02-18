@@ -1,0 +1,124 @@
+.capes-testimonials {
+  background: #F9F9F9;
+  padding: var(--space-4xl) 0;
+}
+
+.capes-testimonials__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+}
+
+.capes-testimonials__header {
+  text-align: center;
+}
+
+.capes-testimonials__label {
+  display: inline-block;
+  font-family: 'Industry', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-royal-blue);
+  margin-bottom: var(--space-xs);
+}
+
+.capes-testimonials__title {
+  font-family: 'Industry', sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--color-navy);
+  margin: 0;
+}
+
+/* Cards grid */
+.capes-testimonials__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+
+.capes-testimonials__card {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  padding: var(--space-xl);
+  border: 1px solid var(--color-gray-100);
+  border-left: 4px solid var(--color-royal-blue);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin: 0;
+  transition: transform var(--duration-fast) var(--ease-default),
+              box-shadow var(--duration-fast) var(--ease-default);
+}
+
+.capes-testimonials__card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.capes-testimonials__quote-mark {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 3.5rem;
+  line-height: 1;
+  color: var(--color-royal-blue);
+  opacity: 0.3;
+  user-select: none;
+}
+
+.capes-testimonials__text {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-gray-700);
+  margin: 0;
+  flex: 1;
+  font-style: italic;
+}
+
+.capes-testimonials__footer {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--color-gray-100);
+}
+
+.capes-testimonials__author {
+  font-family: 'Industry', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 800;
+  color: var(--color-navy);
+  font-style: normal;
+}
+
+.capes-testimonials__role {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 0.8rem;
+  color: var(--color-gray-500);
+}
+
+/* Responsive */
+@media (max-width: 1023px) {
+  .capes-testimonials__grid {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .capes-testimonials {
+    padding: var(--space-3xl) 0;
+  }
+
+  .capes-testimonials__card {
+    padding: var(--space-lg);
+  }
+
+  .capes-testimonials__quote-mark {
+    font-size: 2.5rem;
+  }
+}

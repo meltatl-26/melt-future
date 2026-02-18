@@ -1,0 +1,287 @@
+/* =============================================
+   Handcrafted Work Page
+   Dark, minimal, Accordion.net.au-inspired
+   ============================================= */
+
+.hc-work {
+  background: var(--color-black);
+  color: var(--color-white);
+  min-height: 100vh;
+  padding: var(--space-4xl) 0;
+}
+
+.hc-work__inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--grid-gutter);
+}
+
+/* Header */
+.hc-work__header {
+  margin-bottom: var(--space-3xl);
+}
+
+.hc-work__label {
+  display: block;
+  font-family: 'Industry', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--color-gray-500);
+  margin-bottom: var(--space-md);
+}
+
+.hc-work__title {
+  font-family: 'Industry', sans-serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  color: var(--color-white);
+  line-height: 0.95;
+  margin-bottom: var(--space-md);
+}
+
+.hc-work__count {
+  font-size: 14px;
+  color: var(--color-gray-500);
+  font-weight: 400;
+}
+
+.hc-work__count strong {
+  color: var(--color-white);
+  font-weight: 700;
+}
+
+/* Layout: sidebar + grid */
+.hc-work__layout {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: var(--space-3xl);
+}
+
+/* Sidebar Filters */
+.hc-work__sidebar {
+  position: sticky;
+  top: 100px;
+  align-self: start;
+}
+
+.hc-work__filter-label {
+  display: block;
+  font-family: 'Industry', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--color-gray-600);
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--color-gray-800);
+}
+
+.hc-work__filters {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.hc-work__filter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  font-family: 'Industry', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-gray-500);
+  border-bottom: 1px solid transparent;
+  transition: all var(--duration-normal) cubic-bezier(0.42, 0, 0.04, 1);
+  cursor: pointer;
+}
+
+.hc-work__filter:hover {
+  color: var(--color-white);
+}
+
+.hc-work__filter--active {
+  color: var(--color-white);
+  border-bottom-color: var(--color-white);
+}
+
+.hc-work__filter-count {
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--color-gray-600);
+  transition: color var(--duration-normal) cubic-bezier(0.42, 0, 0.04, 1);
+}
+
+.hc-work__filter--active .hc-work__filter-count {
+  color: var(--color-gray-400);
+}
+
+/* Project Grid */
+.hc-work__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+}
+
+/* Project Card */
+.hc-work__card {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+.hc-work__card-image {
+  position: relative;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+}
+
+.hc-work__card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: linear-gradient(145deg, var(--color-gray-900) 0%, var(--color-gray-800) 100%);
+  filter: grayscale(100%) brightness(0.7);
+  transition: all var(--duration-slow) cubic-bezier(0.42, 0, 0.04, 1);
+}
+
+.hc-work__card:hover .hc-work__card-img {
+  filter: grayscale(0%) brightness(1);
+  transform: scale(1.03);
+}
+
+.hc-work__card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(10, 10, 10, 0.9) 0%,
+    rgba(10, 10, 10, 0.2) 50%,
+    transparent 100%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: var(--space-lg);
+  transition: all var(--duration-normal) cubic-bezier(0.42, 0, 0.04, 1);
+}
+
+.hc-work__card-category {
+  font-family: 'Industry', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-gray-400);
+  margin-bottom: var(--space-xs);
+  transition: color var(--duration-normal) cubic-bezier(0.42, 0, 0.04, 1);
+}
+
+.hc-work__card:hover .hc-work__card-category {
+  color: var(--color-royal-blue);
+}
+
+.hc-work__card-title {
+  font-family: 'Industry', sans-serif;
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  color: var(--color-white);
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.hc-work__card-client {
+  font-size: 13px;
+  color: var(--color-gray-400);
+  margin-bottom: var(--space-sm);
+}
+
+.hc-work__card-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-top: var(--space-sm);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all var(--duration-normal) cubic-bezier(0.42, 0, 0.04, 1);
+}
+
+.hc-work__card:hover .hc-work__card-meta {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hc-work__card-year {
+  font-family: 'Industry', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-gray-500);
+  letter-spacing: 0.05em;
+}
+
+.hc-work__card-stat {
+  font-family: 'Industry', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-royal-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Empty State */
+.hc-work__empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: var(--space-4xl);
+  color: var(--color-gray-600);
+  font-size: 1rem;
+}
+
+/* =============================================
+   Responsive
+   ============================================= */
+
+@media (max-width: 1023px) {
+  .hc-work__layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  .hc-work__sidebar {
+    position: static;
+  }
+
+  .hc-work__filters {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0 var(--space-lg);
+  }
+
+  .hc-work__filter {
+    padding: 8px 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .hc-work__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hc-work__title {
+    font-size: clamp(2.5rem, 12vw, 4rem);
+  }
+
+  .hc-work__card-meta {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

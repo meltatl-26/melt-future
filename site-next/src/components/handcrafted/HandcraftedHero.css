@@ -1,0 +1,512 @@
+/* =============================================
+   Handcrafted Hero — "EXECUTION"
+   Accordion-inspired massive typography
+   ============================================= */
+
+.hc-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-black);
+  color: var(--color-white);
+  overflow: hidden;
+}
+
+/* Massive display word */
+.hc-hero__word {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  user-select: none;
+}
+
+.hc-hero__char {
+  display: inline-block;
+  font-family: 'Industry', sans-serif;
+  font-size: clamp(5rem, 18vw, 16rem);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-white);
+  opacity: 0;
+  transform: translateY(100%) rotate(8deg);
+  animation: hcCharReveal 0.8s var(--ease-default) forwards;
+  /* Triple shadow echo effect */
+  text-shadow:
+    0.03em 0.03em 0 rgba(51, 86, 255, 0.3),
+    0.06em 0.06em 0 rgba(51, 86, 255, 0.15),
+    0.09em 0.09em 0 rgba(51, 86, 255, 0.05);
+}
+
+/* Stagger each character */
+.hc-hero__char:nth-child(1) { animation-delay: 0.1s; }
+.hc-hero__char:nth-child(2) { animation-delay: 0.15s; }
+.hc-hero__char:nth-child(3) { animation-delay: 0.2s; }
+.hc-hero__char:nth-child(4) { animation-delay: 0.25s; }
+.hc-hero__char:nth-child(5) { animation-delay: 0.3s; }
+.hc-hero__char:nth-child(6) { animation-delay: 0.35s; }
+.hc-hero__char:nth-child(7) { animation-delay: 0.4s; }
+.hc-hero__char:nth-child(8) { animation-delay: 0.45s; }
+.hc-hero__char:nth-child(9) { animation-delay: 0.5s; }
+
+@keyframes hcCharReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(100%) rotate(8deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+/* Tagline */
+.hc-hero__tagline {
+  margin-top: var(--space-xl);
+  font-family: 'Satoshi', sans-serif;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0;
+  animation: hcFadeUp 0.6s var(--ease-default) 0.8s forwards;
+}
+
+@keyframes hcFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scroll indicator */
+.hc-hero__scroll {
+  position: absolute;
+  bottom: var(--space-xl);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  opacity: 0;
+  animation: hcFadeUp 0.6s var(--ease-default) 1.2s forwards;
+}
+
+.hc-hero__scroll-text {
+  font-family: 'Industry', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.hc-hero__scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4), transparent);
+  animation: hcScrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes hcScrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
+  50% { opacity: 1; transform: scaleY(1); }
+}
+
+/* =============================================
+   Execution Iceberg — Scroll-driven reveal
+   ============================================= */
+
+.hc-iceberg {
+  position: relative;
+  background: var(--color-black);
+  color: var(--color-white);
+  padding: var(--space-4xl) 0;
+  overflow: hidden;
+}
+
+.hc-iceberg__inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--grid-gutter);
+}
+
+.hc-iceberg__header {
+  text-align: center;
+  margin-bottom: var(--space-3xl);
+}
+
+.hc-iceberg__label {
+  display: inline-block;
+  font-family: 'Industry', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: var(--space-sm);
+}
+
+.hc-iceberg__title {
+  font-family: 'Industry', sans-serif;
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 900;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+.hc-iceberg__title em {
+  font-style: normal;
+  color: var(--color-royal-blue);
+}
+
+/* Waterline visualization */
+.hc-iceberg__visual {
+  position: relative;
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+.hc-iceberg__waterline {
+  position: relative;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(51, 86, 255, 0.6), transparent);
+  margin: var(--space-2xl) 0;
+}
+
+.hc-iceberg__waterline-label {
+  position: absolute;
+  right: 0;
+  top: -24px;
+  font-family: 'Industry', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(51, 86, 255, 0.6);
+}
+
+/* Above water — what people see */
+.hc-iceberg__above {
+  text-align: center;
+  padding: var(--space-xl) 0;
+}
+
+.hc-iceberg__above-percent {
+  font-family: 'Industry', sans-serif;
+  font-size: clamp(4rem, 10vw, 8rem);
+  font-weight: 900;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.15);
+}
+
+.hc-iceberg__above-desc {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: var(--space-sm);
+}
+
+/* Below water — the hidden execution stack */
+.hc-iceberg__below {
+  padding: var(--space-xl) 0;
+}
+
+.hc-iceberg__below-percent {
+  text-align: center;
+  font-family: 'Industry', sans-serif;
+  font-size: clamp(4rem, 10vw, 8rem);
+  font-weight: 900;
+  line-height: 1;
+  color: var(--color-royal-blue);
+  margin-bottom: var(--space-xl);
+}
+
+.hc-iceberg__below-desc {
+  text-align: center;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: var(--space-2xl);
+}
+
+.hc-iceberg__stack {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.hc-iceberg__stack-item {
+  padding: var(--space-lg);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  transition: all var(--duration-normal) var(--ease-default);
+}
+
+.hc-iceberg__stack-item:hover {
+  border-color: rgba(51, 86, 255, 0.4);
+  background: rgba(51, 86, 255, 0.04);
+}
+
+.hc-iceberg__stack-number {
+  display: block;
+  font-family: 'Industry', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(51, 86, 255, 0.6);
+  margin-bottom: var(--space-xs);
+}
+
+.hc-iceberg__stack-title {
+  font-family: 'Industry', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-white);
+  margin-bottom: 4px;
+}
+
+.hc-iceberg__stack-desc {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Cinematic statement */
+.hc-statement {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-black);
+  padding: var(--space-4xl) var(--grid-gutter);
+  text-align: center;
+}
+
+.hc-statement__text {
+  font-family: 'Industry', sans-serif;
+  font-size: clamp(1.5rem, 4vw, 3.5rem);
+  font-weight: 900;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: var(--color-white);
+  max-width: 900px;
+}
+
+.hc-statement__text em {
+  font-style: normal;
+  color: var(--color-royal-blue);
+}
+
+.hc-statement__text span {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* =============================================
+   Handcrafted Stats
+   ============================================= */
+
+.hc-stats {
+  background: var(--color-black);
+  padding: var(--space-3xl) 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.hc-stats__inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--grid-gutter);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-lg);
+}
+
+.hc-stats__item {
+  text-align: center;
+  padding: var(--space-lg) 0;
+}
+
+.hc-stats__value {
+  display: block;
+  font-family: 'Industry', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 900;
+  line-height: 1;
+  color: var(--color-white);
+  margin-bottom: var(--space-xs);
+}
+
+.hc-stats__label {
+  font-family: 'Industry', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* =============================================
+   Handcrafted Client Logos
+   ============================================= */
+
+.hc-clients {
+  background: var(--color-black);
+  padding: var(--space-2xl) 0;
+  overflow: hidden;
+}
+
+.hc-clients__track {
+  display: flex;
+  gap: var(--space-xl);
+  animation: hcMarquee 30s linear infinite;
+  width: max-content;
+}
+
+.hc-clients__name {
+  font-family: 'Industry', sans-serif;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.15);
+  white-space: nowrap;
+  transition: color var(--duration-normal) var(--ease-default);
+  flex-shrink: 0;
+}
+
+.hc-clients__name:hover {
+  color: var(--color-white);
+}
+
+@keyframes hcMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.hc-clients:hover .hc-clients__track {
+  animation-play-state: paused;
+}
+
+/* =============================================
+   Handcrafted Contact CTA
+   ============================================= */
+
+.hc-cta {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-black);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  text-align: center;
+  padding: var(--space-4xl) var(--grid-gutter);
+}
+
+.hc-cta__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.hc-cta__label {
+  font-family: 'Industry', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.hc-cta__title {
+  font-family: 'Industry', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--color-white);
+  line-height: 1.05;
+}
+
+.hc-cta__links {
+  display: flex;
+  gap: var(--space-lg);
+  margin-top: var(--space-md);
+}
+
+.hc-cta__link {
+  font-family: 'Industry', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.5);
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+  transition: all var(--duration-fast) var(--ease-default);
+}
+
+.hc-cta__link:hover {
+  color: var(--color-white);
+  border-bottom-color: var(--color-royal-blue);
+}
+
+/* =============================================
+   Responsive
+   ============================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .hc-hero__char {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  .hc-hero__tagline,
+  .hc-hero__scroll {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  .hc-clients__track {
+    animation: none;
+  }
+}
+
+@media (max-width: 1023px) {
+  .hc-iceberg__stack {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hc-stats__inner {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .hc-iceberg__stack {
+    grid-template-columns: 1fr;
+  }
+
+  .hc-stats__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .hc-cta__links {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .hc-hero__char {
+    font-size: clamp(3rem, 15vw, 8rem);
+  }
+}

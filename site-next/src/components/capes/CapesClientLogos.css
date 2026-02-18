@@ -1,0 +1,97 @@
+.capes-logos {
+  padding: var(--space-2xl) 0;
+  overflow: hidden;
+  background: var(--color-gray-100);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* Track */
+.capes-logos__track {
+  display: flex;
+  gap: var(--space-md);
+  width: max-content;
+  will-change: transform;
+}
+
+.capes-logos__track--forward {
+  animation: capes-logos-scroll-forward 40s linear infinite;
+}
+
+.capes-logos__track--reverse {
+  animation: capes-logos-scroll-reverse 40s linear infinite;
+}
+
+@keyframes capes-logos-scroll-forward {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes capes-logos-scroll-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Badge */
+.capes-logos__badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 20px;
+  border: 1px solid var(--color-gray-300);
+  border-radius: 100px;
+  font-family: 'Industry', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-gray-500);
+  white-space: nowrap;
+  opacity: 0.7;
+  transition: opacity var(--duration-fast) var(--ease-default);
+  user-select: none;
+}
+
+.capes-logos__badge:hover {
+  opacity: 1;
+  color: var(--color-navy);
+  border-color: var(--color-navy);
+}
+
+/* Pause on hover */
+.capes-logos:hover .capes-logos__track {
+  animation-play-state: paused;
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .capes-logos__track--forward,
+  .capes-logos__track--reverse {
+    animation: none;
+  }
+
+  .capes-logos {
+    overflow-x: auto;
+  }
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .capes-logos {
+    padding: var(--space-xl) 0;
+    gap: var(--space-sm);
+  }
+
+  .capes-logos__badge {
+    padding: 6px 14px;
+    font-size: 11px;
+  }
+}

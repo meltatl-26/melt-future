@@ -1,0 +1,119 @@
+.capes-awards {
+  background: var(--color-white);
+  padding: var(--space-4xl) 0;
+}
+
+.capes-awards__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+}
+
+.capes-awards__header {
+  text-align: center;
+}
+
+.capes-awards__label {
+  display: inline-block;
+  font-family: 'Industry', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-royal-blue);
+  margin-bottom: var(--space-xs);
+}
+
+.capes-awards__title {
+  font-family: 'Industry', sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--color-navy);
+  margin: 0;
+}
+
+/* Grid */
+.capes-awards__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-lg);
+}
+
+.capes-awards__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-xl) var(--space-md);
+  border: 1px solid var(--color-gray-100);
+  border-radius: var(--radius-md);
+  transition: transform var(--duration-fast) var(--ease-default),
+              box-shadow var(--duration-fast) var(--ease-default);
+}
+
+.capes-awards__item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.capes-awards__icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--color-gray-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-navy);
+  margin-bottom: var(--space-md);
+}
+
+.capes-awards__name {
+  font-family: 'Industry', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: var(--color-navy);
+  margin: 0 0 var(--space-xs) 0;
+  line-height: 1.2;
+}
+
+.capes-awards__category {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 0.875rem;
+  color: var(--color-gray-500);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Responsive */
+@media (max-width: 1023px) {
+  .capes-awards__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .capes-awards {
+    padding: var(--space-3xl) 0;
+  }
+
+  .capes-awards__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+  }
+
+  .capes-awards__item {
+    padding: var(--space-lg) var(--space-sm);
+  }
+
+  .capes-awards__icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .capes-awards__icon svg {
+    width: 24px;
+    height: 24px;
+  }
+}

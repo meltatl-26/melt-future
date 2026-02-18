@@ -1,0 +1,295 @@
+/* =============================================
+   Contact Page — Handcrafted Version
+   Bold, minimal, dark theme
+   ============================================= */
+
+.hc-contact {
+  min-height: 100vh;
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+/* Hero */
+.hc-contact__hero {
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-4xl) var(--grid-gutter) var(--space-2xl);
+}
+
+.hc-contact__hero-title {
+  font-family: 'Industry', sans-serif;
+  font-size: clamp(4rem, 12vw, 10rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 0.9;
+  letter-spacing: 0.04em;
+  color: var(--color-white);
+}
+
+.hc-contact__hero-subtitle {
+  margin-top: var(--space-lg);
+  font-family: 'Satoshi', sans-serif;
+  font-size: clamp(0.875rem, 1.5vw, 1.125rem);
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.08em;
+}
+
+/* Form section */
+.hc-contact__form-section {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 var(--grid-gutter) var(--space-4xl);
+}
+
+.hc-contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.hc-contact__form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+}
+
+.hc-contact__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.hc-contact__field label {
+  font-family: 'Industry', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.hc-contact__optional {
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  opacity: 0.5;
+  text-transform: none;
+}
+
+.hc-contact__field input,
+.hc-contact__field select,
+.hc-contact__field textarea {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--color-white);
+  font-family: 'Satoshi', sans-serif;
+  font-size: 1rem;
+  padding: var(--space-sm) 0;
+  outline: none;
+  transition: border-color var(--duration-fast) var(--ease-default);
+  width: 100%;
+  border-radius: 0;
+  -webkit-appearance: none;
+}
+
+.hc-contact__field input::placeholder,
+.hc-contact__field textarea::placeholder {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.hc-contact__field input:focus,
+.hc-contact__field select:focus,
+.hc-contact__field textarea:focus {
+  border-bottom-color: var(--color-royal-blue);
+}
+
+.hc-contact__field select {
+  cursor: pointer;
+}
+
+.hc-contact__field select option {
+  background: var(--color-gray-900);
+  color: var(--color-white);
+}
+
+.hc-contact__field textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.hc-contact__submit {
+  align-self: flex-start;
+  font-family: 'Industry', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-white);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: var(--space-md) var(--space-2xl);
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-default);
+}
+
+.hc-contact__submit:hover:not(:disabled) {
+  border-color: var(--color-white);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.hc-contact__submit:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Status messages */
+.hc-contact__status {
+  font-size: 0.875rem;
+  padding: var(--space-md);
+  border-radius: var(--radius-sm);
+}
+
+.hc-contact__status--success {
+  color: #4ade80;
+  border: 1px solid rgba(74, 222, 128, 0.2);
+  background: rgba(74, 222, 128, 0.05);
+}
+
+.hc-contact__status--error {
+  color: var(--color-coral);
+  border: 1px solid rgba(255, 64, 64, 0.2);
+  background: rgba(255, 64, 64, 0.05);
+}
+
+/* Info section */
+.hc-contact__info {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding: var(--space-3xl) 0;
+}
+
+.hc-contact__info-inner {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 var(--grid-gutter);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-2xl);
+}
+
+.hc-contact__info-items {
+  display: flex;
+  gap: var(--space-3xl);
+  list-style: none;
+}
+
+.hc-contact__info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+}
+
+.hc-contact__info-label {
+  font-family: 'Industry', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.hc-contact__info-value {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.hc-contact__info-value a {
+  transition: color var(--duration-fast) var(--ease-default);
+}
+
+.hc-contact__info-value a:hover {
+  color: var(--color-white);
+}
+
+/* Scoper link */
+.hc-contact__scoper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.hc-contact__scoper-text {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.hc-contact__scoper-link {
+  font-family: 'Industry', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.5);
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+  transition: all var(--duration-fast) var(--ease-default);
+}
+
+.hc-contact__scoper-link:hover {
+  color: var(--color-white);
+  border-bottom-color: var(--color-royal-blue);
+}
+
+/* Success state */
+.hc-contact__success {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-4xl) var(--grid-gutter);
+}
+
+.hc-contact__success-title {
+  font-family: 'Industry', sans-serif;
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 0.95;
+  color: var(--color-white);
+  margin-bottom: var(--space-lg);
+}
+
+.hc-contact__success-text {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.4);
+  max-width: 480px;
+}
+
+/* =============================================
+   Responsive
+   ============================================= */
+
+@media (max-width: 767px) {
+  .hc-contact__form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .hc-contact__info-items {
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .hc-contact__submit {
+    width: 100%;
+    text-align: center;
+  }
+}
