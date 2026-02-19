@@ -4,14 +4,14 @@
    ============================================= */
 
 .hc-service {
-  background: var(--color-black);
-  color: var(--color-white);
+  background: var(--black);
+  color: var(--white);
 }
 
 /* Hero */
 .hc-service__hero {
   position: relative;
-  padding: var(--space-4xl) 0 var(--space-3xl);
+  padding: var(--space-3xl) 0 var(--space-3xl);
   overflow: hidden;
   min-height: 60vh;
   display: flex;
@@ -26,7 +26,7 @@
   font-family: 'Industry', sans-serif;
   font-size: clamp(20vw, 30vw, 40rem);
   font-weight: 900;
-  color: var(--color-gray-900);
+  color: var(--gray-900);
   line-height: 1;
   user-select: none;
   pointer-events: none;
@@ -35,9 +35,9 @@
 }
 
 .hc-service__hero-inner {
-  max-width: var(--container-max);
+  max-width: var(--container);
   margin: 0 auto;
-  padding: 0 var(--grid-gutter);
+  padding: 0 var(--gutter);
   width: 100%;
   position: relative;
   z-index: 1;
@@ -52,13 +52,13 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: var(--color-gray-500);
+  color: var(--gray-300);
   margin-bottom: var(--space-2xl);
-  transition: color var(--duration-normal) cubic-bezier(0.42, 0, 0.04, 1);
+  transition: color 0.6s cubic-bezier(0.42, 0, 0.04, 1);
 }
 
 .hc-service__back:hover {
-  color: var(--color-white);
+  color: var(--white);
 }
 
 .hc-service__number {
@@ -68,7 +68,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  color: var(--color-royal-blue);
+  color: var(--royal-blue);
   margin-bottom: var(--space-md);
 }
 
@@ -79,7 +79,7 @@
   text-transform: uppercase;
   letter-spacing: -0.02em;
   line-height: 0.95;
-  color: var(--color-white);
+  color: var(--white);
   margin-bottom: var(--space-xl);
   max-width: 800px;
 }
@@ -87,20 +87,20 @@
 .hc-service__description {
   font-size: clamp(1rem, 1.5vw, 1.2rem);
   line-height: 1.7;
-  color: var(--color-gray-400);
+  color: var(--gray-100);
   max-width: 600px;
 }
 
 /* Problem Statement — dramatic pull-quote */
 .hc-service__problem {
-  padding: var(--space-4xl) 0;
-  border-bottom: 1px solid var(--color-gray-800);
+  padding: var(--space-3xl) 0;
+  border-bottom: 1px solid var(--gray-900);
 }
 
 .hc-service__problem-inner {
-  max-width: var(--container-max);
+  max-width: var(--container);
   margin: 0 auto;
-  padding: 0 var(--grid-gutter);
+  padding: 0 var(--gutter);
 }
 
 .hc-service__problem-label {
@@ -110,7 +110,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  color: var(--color-gray-600);
+  color: var(--gray-300);
   margin-bottom: var(--space-xl);
 }
 
@@ -118,22 +118,22 @@
   font-size: clamp(1.5rem, 3vw, 2.25rem);
   font-style: italic;
   line-height: 1.4;
-  color: var(--color-gray-300);
+  color: var(--gray-300);
   max-width: 800px;
   padding-left: var(--space-xl);
-  border-left: 3px solid var(--color-royal-blue);
+  border-left: 3px solid var(--royal-blue);
 }
 
 /* Capabilities — minimal text grid */
 .hc-service__capabilities {
   padding: var(--space-3xl) 0;
-  border-bottom: 1px solid var(--color-gray-800);
+  border-bottom: 1px solid var(--gray-900);
 }
 
 .hc-service__capabilities-inner {
-  max-width: var(--container-max);
+  max-width: var(--container);
   margin: 0 auto;
-  padding: 0 var(--grid-gutter);
+  padding: 0 var(--gutter);
 }
 
 .hc-service__section-label {
@@ -143,7 +143,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  color: var(--color-gray-600);
+  color: var(--gray-300);
   margin-bottom: var(--space-xl);
 }
 
@@ -158,14 +158,14 @@
   padding: var(--space-md) 0;
   font-size: 15px;
   font-weight: 500;
-  color: var(--color-gray-400);
-  border-bottom: 1px solid var(--color-gray-800);
-  transition: all var(--duration-normal) cubic-bezier(0.42, 0, 0.04, 1);
+  color: var(--gray-100);
+  border-bottom: 1px solid var(--gray-900);
+  transition: all 0.6s cubic-bezier(0.42, 0, 0.04, 1);
   text-decoration: none;
 }
 
 .hc-service__capability:hover {
-  color: var(--color-white);
+  color: var(--white);
   padding-left: var(--space-sm);
 }
 
@@ -174,9 +174,9 @@
   display: block;
   width: 0;
   height: 1px;
-  background: var(--color-royal-blue);
+  background: var(--royal-blue);
   margin-top: 2px;
-  transition: width var(--duration-normal) cubic-bezier(0.42, 0, 0.04, 1);
+  transition: width 0.6s cubic-bezier(0.42, 0, 0.04, 1);
 }
 
 .hc-service__capability:hover::after {
@@ -186,13 +186,13 @@
 /* Proof Points — large numbers, horizontal */
 .hc-service__proof {
   padding: var(--space-3xl) 0;
-  border-bottom: 1px solid var(--color-gray-800);
+  border-bottom: 1px solid var(--gray-900);
 }
 
 .hc-service__proof-inner {
-  max-width: var(--container-max);
+  max-width: var(--container);
   margin: 0 auto;
-  padding: 0 var(--grid-gutter);
+  padding: 0 var(--gutter);
 }
 
 .hc-service__proof-grid {
@@ -210,27 +210,27 @@
   font-family: 'Industry', sans-serif;
   font-size: clamp(1.75rem, 3vw, 2.5rem);
   font-weight: 900;
-  color: var(--color-white);
+  color: var(--white);
   line-height: 1.1;
   margin-bottom: 6px;
 }
 
 .hc-service__proof-label {
   font-size: 13px;
-  color: var(--color-gray-500);
+  color: var(--gray-300);
   line-height: 1.4;
 }
 
 /* Related Work */
 .hc-service__related {
   padding: var(--space-3xl) 0;
-  border-bottom: 1px solid var(--color-gray-800);
+  border-bottom: 1px solid var(--gray-900);
 }
 
 .hc-service__related-inner {
-  max-width: var(--container-max);
+  max-width: var(--container);
   margin: 0 auto;
-  padding: 0 var(--grid-gutter);
+  padding: 0 var(--gutter);
 }
 
 .hc-service__related-grid {
@@ -241,7 +241,7 @@
 
 .hc-service__related-card {
   display: block;
-  transition: transform var(--duration-normal) cubic-bezier(0.42, 0, 0.04, 1);
+  transition: transform 0.6s cubic-bezier(0.42, 0, 0.04, 1);
 }
 
 .hc-service__related-card:hover {
@@ -252,10 +252,10 @@
   width: 100%;
   aspect-ratio: 16/10;
   object-fit: cover;
-  background: linear-gradient(145deg, var(--color-gray-900) 0%, var(--color-gray-800) 100%);
+  background: linear-gradient(145deg, var(--gray-900) 0%, var(--gray-900) 100%);
   margin-bottom: var(--space-sm);
   filter: grayscale(100%) brightness(0.7);
-  transition: filter var(--duration-slow) cubic-bezier(0.42, 0, 0.04, 1);
+  transition: filter 1s cubic-bezier(0.42, 0, 0.04, 1);
 }
 
 .hc-service__related-card:hover .hc-service__related-img {
@@ -268,25 +268,25 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--color-white);
+  color: var(--white);
   margin-bottom: 2px;
 }
 
 .hc-service__related-card p {
   font-size: 12px;
-  color: var(--color-gray-500);
+  color: var(--gray-300);
 }
 
 /* CTA */
 .hc-service__cta {
-  padding: var(--space-4xl) 0;
-  border-bottom: 1px solid var(--color-gray-800);
+  padding: var(--space-3xl) 0;
+  border-bottom: 1px solid var(--gray-900);
 }
 
 .hc-service__cta-inner {
-  max-width: var(--container-max);
+  max-width: var(--container);
   margin: 0 auto;
-  padding: 0 var(--grid-gutter);
+  padding: 0 var(--gutter);
   text-align: center;
 }
 
@@ -295,12 +295,12 @@
   font-size: clamp(1.5rem, 3vw, 2.5rem);
   font-weight: 900;
   text-transform: uppercase;
-  color: var(--color-white);
+  color: var(--white);
   margin-bottom: var(--space-sm);
 }
 
 .hc-service__cta-text {
-  color: var(--color-gray-500);
+  color: var(--gray-300);
   margin-bottom: var(--space-xl);
   font-size: 1rem;
 }
@@ -310,19 +310,19 @@
   align-items: center;
   gap: 8px;
   padding: 14px 32px;
-  border: 1px solid var(--color-white);
-  color: var(--color-white);
+  border: 1px solid var(--white);
+  color: var(--white);
   font-family: 'Industry', sans-serif;
   font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  transition: all var(--duration-normal) cubic-bezier(0.42, 0, 0.04, 1);
+  transition: all 0.6s cubic-bezier(0.42, 0, 0.04, 1);
 }
 
 .hc-service__cta-btn:hover {
-  background: var(--color-white);
-  color: var(--color-black);
+  background: var(--white);
+  color: var(--black);
 }
 
 /* All Services Navigation */
@@ -331,9 +331,9 @@
 }
 
 .hc-service__all-inner {
-  max-width: var(--container-max);
+  max-width: var(--container);
   margin: 0 auto;
-  padding: 0 var(--grid-gutter);
+  padding: 0 var(--gutter);
 }
 
 .hc-service__all-nav {
@@ -349,26 +349,26 @@
   padding: var(--space-md) var(--space-xl) var(--space-md) 0;
   font-size: 14px;
   font-weight: 500;
-  color: var(--color-gray-500);
+  color: var(--gray-300);
   border-bottom: 1px solid transparent;
-  transition: all var(--duration-normal) cubic-bezier(0.42, 0, 0.04, 1);
+  transition: all 0.6s cubic-bezier(0.42, 0, 0.04, 1);
   white-space: nowrap;
 }
 
 .hc-service__all-link:hover {
-  color: var(--color-white);
+  color: var(--white);
 }
 
 .hc-service__all-link--active {
-  color: var(--color-white);
-  border-bottom-color: var(--color-royal-blue);
+  color: var(--white);
+  border-bottom-color: var(--royal-blue);
 }
 
 .hc-service__all-number {
   font-family: 'Industry', sans-serif;
   font-size: 10px;
   font-weight: 700;
-  color: var(--color-royal-blue);
+  color: var(--royal-blue);
   letter-spacing: 0.05em;
 }
 
@@ -388,19 +388,19 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: var(--space-4xl) var(--grid-gutter);
+  padding: var(--space-3xl) var(--gutter);
 }
 
 .hc-service__notfound h1 {
   font-family: 'Industry', sans-serif;
   font-size: 2rem;
   text-transform: uppercase;
-  color: var(--color-white);
+  color: var(--white);
   margin-bottom: var(--space-md);
 }
 
 .hc-service__notfound p {
-  color: var(--color-gray-500);
+  color: var(--gray-300);
   margin-bottom: var(--space-lg);
 }
 
@@ -410,12 +410,12 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--color-royal-blue);
-  transition: color var(--duration-fast);
+  color: var(--royal-blue);
+  transition: color 0.2s;
 }
 
 .hc-service__notfound a:hover {
-  color: var(--color-white);
+  color: var(--white);
 }
 
 /* =============================================
@@ -460,10 +460,10 @@
 
   .hc-service__all-link {
     padding-right: 0;
-    border-bottom: 1px solid var(--color-gray-800);
+    border-bottom: 1px solid var(--gray-900);
   }
 
   .hc-service__all-link--active {
-    border-bottom-color: var(--color-royal-blue);
+    border-bottom-color: var(--royal-blue);
   }
 }

@@ -1,77 +1,80 @@
 'use client';
 
-import { useRef } from 'react';
-import Link from 'next/link';
+import { useRef, useEffect } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import TransitionLink from '@/components/shared/TransitionLink';
+import ImageReveal from '@/components/shared/ImageReveal';
+import { useWordReveal } from '@/hooks/useCharacterReveal';
 import { getFeaturedProjects } from '@/data/projects';
 import './CapesFeaturedWork.css';
 
-export function CapesFeaturedWork() {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const projects = getFeaturedProjects();
+gsap.registerPlugin(ScrollTrigger);
 
-  const scroll = (direction: 'left' | 'right') => {
-    if (!scrollRef.current) return;
-    const amount = 380;
-    scrollRef.current.scrollBy({
-      left: direction === 'left' ? -amount : amount,
-      behavior: 'smooth',
+export function CapesFeaturedWork() {
+  const gridRef = useRef<HTMLDivElement>(null);
+  const headingRef = useWordReveal({ triggerStart: 'top 80%' });
+  const projects = getFeaturedProjects().slice(0, 3);
+
+  useEffect(() => {
+    if (!gridRef.current) return;
+
+    const cards = gridRef.current.querySelectorAll('.featured__card');
+
+    gsap.from(cards, {
+      scrollTrigger: {
+        trigger: gridRef.current,
+        start: 'top 75%',
+        once: true,
+      },
+      opacity: 0,
+      y: 60,
+      duration: 1,
+      stagger: 0.2,
+      ease: 'power3.out',
     });
-  };
+
+    return () => {
+      ScrollTrigger.getAll().forEach((st) => st.kill());
+    };
+  }, []);
 
   return (
-    <section className="capes-featured">
-      <div className="capes-featured__inner container">
-        <div className="capes-featured__header">
-          <div>
-            <span className="capes-featured__label">Featured</span>
-            <h2 className="capes-featured__title">Selected Work</h2>
-          </div>
-          <div className="capes-featured__nav">
-            <button
-              className="capes-featured__arrow"
-              onClick={() => scroll('left')}
-              aria-label="Scroll left"
-            >
-              &larr;
-            </button>
-            <button
-              className="capes-featured__arrow"
-              onClick={() => scroll('right')}
-              aria-label="Scroll right"
-            >
-              &rarr;
-            </button>
-          </div>
+    <section className="featured" data-section-theme="light">
+      <div className="container">
+        <div className="featured__header">
+          <span className="eyebrow featured__eyebrow">SELECTED WORK</span>
+          <h2 ref={headingRef as React.Ref<HTMLHeadingElement>} className="featured__heading">
+            Proof.
+          </h2>
+          <TransitionLink to="/work" className="featured__view-all">
+            View all work &rarr;
+          </TransitionLink>
         </div>
 
-        <div className="capes-featured__carousel" ref={scrollRef}>
-          {projects.map((project) => (
-            <article key={project.slug} className="capes-featured__card">
-              <div className="capes-featured__thumb">
-                <img
-                  src={project.thumbnail}
-                  alt={project.title}
-                  className="capes-featured__thumb-img"
-                  loading="lazy"
-                />
-                <span className="capes-featured__category">{project.category}</span>
+        <div className="featured__grid" ref={gridRef}>
+          {projects.map((project, i) => (
+            <TransitionLink
+              key={project.slug}
+              to={`/work/${project.slug}`}
+              className={`featured__card featured__card--${i + 1}`}
+            >
+              <ImageReveal
+                src={project.thumbnail}
+                alt={project.title}
+                style={{ width: '100%', height: '100%', borderRadius: 'var(--radius-lg)' }}
+              />
+              <div className="featured__info">
+                <span className="caption featured__category">
+                  {project.category}
+                </span>
+                <h3 className="featured__title">{project.title}</h3>
+                {project.stat && (
+                  <span className="featured__stat">{project.stat}</span>
+                )}
               </div>
-              <div className="capes-featured__card-body">
-                <h3 className="capes-featured__card-title">{project.title}</h3>
-                <p className="capes-featured__card-client">{project.client}</p>
-                <p className="capes-featured__card-stat">{project.stat}</p>
-                <Link href={`/work/${project.slug}`} className="capes-featured__card-link">
-                  View Case Study &rarr;
-                </Link>
-              </div>
-            </article>
+            </TransitionLink>
           ))}
-        </div>
-
-        <div className="capes-featured__footer">
-          <Link href="/work" className="capes-featured__see-all">
-            See All Work &rarr;
-          </Link>
         </div>
       </div>
     </section>

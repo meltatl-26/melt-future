@@ -1,11 +1,19 @@
 'use client';
 
+import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useVersion } from '@/lib/version-context';
+import { useCharacterReveal, useWordReveal } from '@/hooks/useCharacterReveal';
+import { useReducedMotion } from '@/hooks/useReducedMotion';
+import TransitionLink from '@/components/shared/TransitionLink';
 import insights, { getFeaturedInsights } from '@/data/insights';
 import type { Insight } from '@/data/insights';
 import './insights.css';
 import './insights-hc.css';
+
+gsap.registerPlugin(ScrollTrigger);
 
 function LockIcon() {
   return (
@@ -32,7 +40,7 @@ function formatDate(dateStr: string): string {
 function FeaturedCard({ insight }: { insight: Insight }) {
   return (
     <div className="capes-insights__featured">
-      <Link href={`/insights/${insight.slug}`} className="capes-insights__featured-card">
+      <TransitionLink to={`/insights/${insight.slug}`} className="capes-insights__featured-card">
         <div className="capes-insights__featured-image">
           <span className="capes-insights__featured-badge">Featured</span>
         </div>
@@ -45,14 +53,14 @@ function FeaturedCard({ insight }: { insight: Insight }) {
             <span>{insight.readTime} read</span>
           </div>
         </div>
-      </Link>
+      </TransitionLink>
     </div>
   );
 }
 
 function InsightCard({ insight }: { insight: Insight }) {
   return (
-    <Link href={`/insights/${insight.slug}`} className="capes-insights__card">
+    <TransitionLink to={`/insights/${insight.slug}`} className="capes-insights__card">
       <div className="capes-insights__card-image">
         <span className="capes-insights__card-category">{insight.category}</span>
         {insight.tier >= 2 && (
@@ -71,7 +79,7 @@ function InsightCard({ insight }: { insight: Insight }) {
           )}
         </div>
       </div>
-    </Link>
+    </TransitionLink>
   );
 }
 
@@ -133,28 +141,57 @@ function HcInsightCard({ insight }: { insight: Insight }) {
 }
 
 function HandcraftedInsights() {
+  const prefersReduced = useReducedMotion();
+  const heroHeadingRef = useCharacterReveal();
+  const featuredRef = useRef<HTMLDivElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
   const featured = getFeaturedInsights();
   const primaryFeatured = featured[0];
   const remaining = insights.filter((i) => i.slug !== primaryFeatured?.slug);
 
+  useEffect(() => {
+    if (prefersReduced) return;
+
+    // Featured card entrance
+    if (featuredRef.current) {
+      gsap.from(featuredRef.current, {
+        opacity: 0, y: 40, duration: 0.8, ease: 'power2.out',
+        scrollTrigger: { trigger: featuredRef.current, start: 'top 80%', once: true },
+      });
+    }
+
+    // Grid cards stagger entrance
+    if (gridRef.current) {
+      const items = gridRef.current.querySelectorAll('.hc-insights__card');
+      gsap.from(items, {
+        opacity: 0, y: 40, stagger: 0.15, duration: 0.8, ease: 'power2.out',
+        scrollTrigger: { trigger: gridRef.current, start: 'top 80%', once: true },
+      });
+    }
+
+    return () => { ScrollTrigger.getAll().forEach(st => st.kill()); };
+  }, [prefersReduced]);
+
   return (
-    <section className="hc-insights">
+    <section className="hc-insights" data-section-theme="dark">
       <div className="hc-insights__inner">
         {/* Hero */}
         <div className="hc-insights__hero">
           <span className="hc-insights__label">Editorial</span>
-          <h1 className="hc-insights__title">Insights</h1>
+          <h1 className="hc-insights__title" ref={heroHeadingRef as React.Ref<HTMLHeadingElement>}>Insights</h1>
           <p className="hc-insights__subtitle">
             Experiential marketing intelligence from 26 years in the field.
           </p>
         </div>
 
         {/* Featured */}
-        {primaryFeatured && <HcFeaturedCard insight={primaryFeatured} />}
+        <div ref={featuredRef}>
+          {primaryFeatured && <HcFeaturedCard insight={primaryFeatured} />}
+        </div>
 
         {/* Grid */}
         <span className="hc-insights__grid-label">All Insights</span>
-        <div className="hc-insights__grid">
+        <div className="hc-insights__grid" ref={gridRef}>
           {remaining.map((insight) => (
             <HcInsightCard key={insight.slug} insight={insight} />
           ))}
@@ -168,14 +205,29 @@ function CapesInsights() {
   const featured = getFeaturedInsights();
   const primaryFeatured = featured[0];
   const remaining = insights.filter((i) => i.slug !== primaryFeatured?.slug);
+  const prefersReduced = useReducedMotion();
+  const heroHeadingRef = useCharacterReveal();
+  const gridHeadingRef = useWordReveal();
+  const gridRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (prefersReduced) return;
+    if (!gridRef.current) return;
+    const items = gridRef.current.querySelectorAll('.capes-insights__card');
+    gsap.from(items, {
+      opacity: 0, y: 40, stagger: 0.15, duration: 0.8, ease: 'power2.out',
+      scrollTrigger: { trigger: gridRef.current, start: 'top 80%', once: true },
+    });
+    return () => { ScrollTrigger.getAll().forEach(st => st.kill()); };
+  }, [prefersReduced]);
 
   return (
     <section className="capes-insights">
       <div className="container">
         {/* Hero */}
-        <div className="capes-insights__hero">
+        <div className="capes-insights__hero" data-section-theme="dark">
           <span className="capes-insights__label">Portfolio</span>
-          <h1 className="capes-insights__title">Insights</h1>
+          <h1 className="capes-insights__title" ref={heroHeadingRef as React.Ref<HTMLHeadingElement>}>Insights</h1>
           <p className="capes-insights__subtitle">
             Experiential marketing intelligence from 26 years in the field.
           </p>
@@ -185,11 +237,13 @@ function CapesInsights() {
         {primaryFeatured && <FeaturedCard insight={primaryFeatured} />}
 
         {/* Grid */}
-        <h2 className="capes-insights__grid-heading">All Insights</h2>
-        <div className="capes-insights__grid">
-          {remaining.map((insight) => (
-            <InsightCard key={insight.slug} insight={insight} />
-          ))}
+        <div data-section-theme="light">
+          <h2 className="capes-insights__grid-heading" ref={gridHeadingRef as React.Ref<HTMLHeadingElement>}>All Insights</h2>
+          <div className="capes-insights__grid" ref={gridRef}>
+            {remaining.map((insight) => (
+              <InsightCard key={insight.slug} insight={insight} />
+            ))}
+          </div>
         </div>
       </div>
     </section>

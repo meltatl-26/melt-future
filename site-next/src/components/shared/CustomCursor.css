@@ -1,0 +1,21 @@
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--white);
+  mix-blend-mode: difference;
+  pointer-events: none;
+  z-index: var(--z-cursor);
+  transition: width 0.3s ease, height 0.3s ease, margin 0.3s ease;
+  will-change: transform;
+}
+
+.custom-cursor.cursor--hover {
+  width: 40px;
+  height: 40px;
+  margin-left: -14px;
+  margin-top: -14px;
+}

@@ -1,140 +1,121 @@
 'use client';
 
-import Link from 'next/link';
-import clients from '@/data/clients';
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import SplitType from 'split-type';
+import { useReducedMotion } from '@/hooks/useReducedMotion';
 import './HandcraftedHero.css';
 
-const EXECUTION = 'EXECUTION'.split('');
-
-const ICEBERG_STACK = [
-  { number: '01', title: 'Permitting & Compliance', desc: 'City permits, health departments, fire marshals, insurance certificates — across every market.' },
-  { number: '02', title: 'Venue & Logistics', desc: 'Site surveys, load-in schedules, power drops, weather contingencies, parking coordination.' },
-  { number: '03', title: 'Staffing & Training', desc: 'Brand ambassadors, event managers, security, cleanup crews — hired, trained, managed.' },
-  { number: '04', title: 'Custom Fabrication', desc: 'Branded builds, stage design, interactive installations, signage — designed, built, shipped.' },
-  { number: '05', title: 'Vendor Management', desc: 'Catering, AV, transportation, rentals, print production — sourced, negotiated, coordinated.' },
-  { number: '06', title: 'Measurement & Reporting', desc: 'Real-time dashboards, post-event recaps, ROI analysis, client-ready deliverables.' },
+const HERO_IMAGES = [
+  '/images/hero/hero-02.webp',
+  '/images/hero/hero-03.webp',
+  '/images/hero/hero-04.webp',
+  '/images/work/ncaa-final-four.webp',
+  '/images/work/coca-cola-gameday.webp',
 ];
 
 export function HandcraftedHero() {
+  const wordRef = useRef<HTMLDivElement>(null);
+  const taglineRef = useRef<HTMLParagraphElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const slidesRef = useRef<HTMLDivElement[]>([]);
+  const prefersReduced = useReducedMotion();
+
+  // Cycling background images
+  useEffect(() => {
+    if (slidesRef.current.length === 0) return;
+
+    let current = 0;
+    const slides = slidesRef.current;
+
+    // Set first slide visible
+    gsap.set(slides[0], { opacity: 1 });
+
+    if (prefersReduced) return;
+
+    const interval = setInterval(() => {
+      const next = (current + 1) % slides.length;
+      gsap.to(slides[current], { opacity: 0, duration: 1.5, ease: 'power2.inOut' });
+      gsap.to(slides[next], { opacity: 1, duration: 1.5, ease: 'power2.inOut' });
+      current = next;
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [prefersReduced]);
+
+  // Hero character animation
+  useEffect(() => {
+    if (prefersReduced) return;
+    if (!wordRef.current || !taglineRef.current) return;
+
+    const split = new SplitType(wordRef.current, { types: 'chars' });
+    if (!split.chars) return;
+
+    gsap.from(split.chars, {
+      opacity: 0,
+      y: '100%',
+      rotation: 8,
+      duration: 0.8,
+      stagger: 0.05,
+      ease: 'power3.out',
+      delay: 0.2,
+    });
+
+    gsap.from(taglineRef.current, {
+      opacity: 0,
+      y: 20,
+      duration: 0.6,
+      delay: 1.0,
+      ease: 'power2.out',
+    });
+
+    if (scrollRef.current) {
+      gsap.from(scrollRef.current, {
+        opacity: 0,
+        y: 20,
+        duration: 0.6,
+        delay: 1.4,
+        ease: 'power2.out',
+      });
+    }
+
+    return () => {
+      split.revert();
+    };
+  }, [prefersReduced]);
+
   return (
-    <>
-      {/* EXECUTION Hero */}
-      <section className="hc-hero">
-        <div className="hc-hero__word" aria-label="Execution">
-          {EXECUTION.map((char, i) => (
-            <span key={i} className="hc-hero__char" aria-hidden="true">
-              {char}
-            </span>
-          ))}
+    <section className="hc-hero" data-section-theme="dark">
+      {/* Cycling background images */}
+      <div className="hc-hero__bg" aria-hidden="true">
+        {HERO_IMAGES.map((src, i) => (
+          <div
+            key={src}
+            className="hc-hero__bg-slide"
+            ref={(el) => {
+              if (el) slidesRef.current[i] = el;
+            }}
+            style={{ backgroundImage: `url(${src})` }}
+          />
+        ))}
+        <div className="hc-hero__bg-overlay" />
+      </div>
+
+      {/* Hero content */}
+      <div className="hc-hero__content">
+        <div ref={wordRef} className="hc-hero__word" aria-label="Execution">
+          EXECUTION
         </div>
-        <p className="hc-hero__tagline">
-          Great ideas aren&apos;t anything without great execution.
+        <p ref={taglineRef} className="hc-hero__tagline">
+          We execute what others only imagine.
         </p>
-        <div className="hc-hero__scroll" aria-hidden="true">
-          <span className="hc-hero__scroll-text">Scroll</span>
-          <div className="hc-hero__scroll-line" />
-        </div>
-      </section>
+      </div>
 
-      {/* Execution Iceberg */}
-      <section className="hc-iceberg">
-        <div className="hc-iceberg__inner">
-          <div className="hc-iceberg__header">
-            <span className="hc-iceberg__label">The Execution Gap</span>
-            <h2 className="hc-iceberg__title">
-              What They See vs.<br /><em>What We Do</em>
-            </h2>
-          </div>
-
-          <div className="hc-iceberg__visual">
-            {/* Above water */}
-            <div className="hc-iceberg__above">
-              <div className="hc-iceberg__above-percent">10%</div>
-              <p className="hc-iceberg__above-desc">
-                The activation. The experience. The moment.
-              </p>
-            </div>
-
-            {/* Waterline */}
-            <div className="hc-iceberg__waterline">
-              <span className="hc-iceberg__waterline-label">Surface Level</span>
-            </div>
-
-            {/* Below water */}
-            <div className="hc-iceberg__below">
-              <div className="hc-iceberg__below-percent">90%</div>
-              <p className="hc-iceberg__below-desc">
-                The hidden execution stack that makes it all possible.
-              </p>
-
-              <div className="hc-iceberg__stack">
-                {ICEBERG_STACK.map((item) => (
-                  <div key={item.number} className="hc-iceberg__stack-item">
-                    <span className="hc-iceberg__stack-number">{item.number}</span>
-                    <h3 className="hc-iceberg__stack-title">{item.title}</h3>
-                    <p className="hc-iceberg__stack-desc">{item.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Cinematic Statement */}
-      <section className="hc-statement">
-        <h2 className="hc-statement__text">
-          <span>AI can dream it.</span><br />
-          <span>Your agency can deck it.</span><br />
-          <em>We deliver it.</em>
-        </h2>
-      </section>
-
-      {/* Stats */}
-      <section className="hc-stats">
-        <div className="hc-stats__inner">
-          <div className="hc-stats__item">
-            <span className="hc-stats__value">26+</span>
-            <span className="hc-stats__label">Years</span>
-          </div>
-          <div className="hc-stats__item">
-            <span className="hc-stats__value">10K+</span>
-            <span className="hc-stats__label">Events</span>
-          </div>
-          <div className="hc-stats__item">
-            <span className="hc-stats__value">19</span>
-            <span className="hc-stats__label">Final Fours</span>
-          </div>
-          <div className="hc-stats__item">
-            <span className="hc-stats__value">22yr</span>
-            <span className="hc-stats__label">Coca-Cola</span>
-          </div>
-        </div>
-      </section>
-
-      {/* Client Logos Marquee */}
-      <section className="hc-clients">
-        <div className="hc-clients__track">
-          {[...clients, ...clients].map((client, i) => (
-            <span key={`${client.slug}-${i}`} className="hc-clients__name">
-              {client.name}
-            </span>
-          ))}
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="hc-cta">
-        <div className="hc-cta__inner">
-          <span className="hc-cta__label">Ready?</span>
-          <h2 className="hc-cta__title">Let&apos;s Build<br />Something Real</h2>
-          <div className="hc-cta__links">
-            <Link href="/contact" className="hc-cta__link">Start a Conversation</Link>
-            <Link href="/scope-your-project" className="hc-cta__link">Scope Your Project</Link>
-            <Link href="/work" className="hc-cta__link">See the Work</Link>
-          </div>
-        </div>
-      </section>
-    </>
+      {/* Scroll indicator */}
+      <div ref={scrollRef} className="hc-hero__scroll" aria-hidden="true">
+        <div className="hc-hero__scroll-line" />
+        <span className="hc-hero__scroll-text">Scroll</span>
+      </div>
+    </section>
   );
 }

@@ -27,8 +27,6 @@ export function useLenisSetup() {
       touchMultiplier: 2,
     });
 
-    ScrollTrigger.normalizeScroll(true);
-
     const rafCallback = (time: number) => instance.raf(time * 1000);
     gsap.ticker.add(rafCallback);
     gsap.ticker.lagSmoothing(0);

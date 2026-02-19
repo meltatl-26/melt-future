@@ -1,0 +1,80 @@
+/* =============================================
+   HC About Interlude — image + mission + link
+   ============================================= */
+
+.hc-about-interlude {
+  background: var(--black);
+  padding: var(--space-2xl) 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.hc-about-interlude__inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2xl);
+  align-items: center;
+}
+
+.hc-about-interlude__image-wrap {
+  overflow: hidden;
+  aspect-ratio: 4/3;
+}
+
+.hc-about-interlude__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Monochrome system */
+  filter: grayscale(100%) brightness(0.65);
+  transition: filter 0.8s var(--ease-custom);
+}
+
+.hc-about-interlude__image-wrap:hover .hc-about-interlude__image {
+  filter: grayscale(0%) brightness(1);
+}
+
+.hc-about-interlude__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.hc-about-interlude__text {
+  font-family: 'Industry', sans-serif;
+  font-size: clamp(1.75rem, 4vw, 3.5rem);
+  font-weight: 900;
+  line-height: 1.05;
+  color: var(--white);
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.hc-about-interlude__link {
+  display: inline-block;
+  font-family: 'Industry', sans-serif;
+  font-size: var(--nav);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  padding-bottom: 3px;
+  align-self: flex-start;
+  transition: color 0.3s var(--ease-custom), border-color 0.3s var(--ease-custom);
+}
+
+.hc-about-interlude__link:hover {
+  color: var(--white);
+  border-color: var(--white);
+}
+
+@media (max-width: 767px) {
+  .hc-about-interlude__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+}

@@ -1,0 +1,117 @@
+.letterbox-scroll {
+  position: relative;
+  height: 100vh;
+  background: var(--navy);
+  overflow: hidden;
+}
+
+.letterbox-scroll__bands {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.letterbox-scroll__band {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background: var(--black);
+  height: 7.5vh;
+}
+
+.letterbox-scroll__band--top {
+  top: 0;
+}
+
+.letterbox-scroll__band--bottom {
+  bottom: 0;
+}
+
+.letterbox-scroll__content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  padding: 0 var(--gutter);
+}
+
+.letterbox-scroll__message {
+  position: absolute;
+  color: var(--white);
+  text-align: center;
+  max-width: 90%;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  will-change: transform, opacity;
+}
+
+.letterbox-scroll__message .highlight {
+  color: var(--lime-green);
+}
+
+.letterbox-scroll__logos-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--black);
+  padding: var(--space-md) 0;
+  z-index: 15;
+  overflow: hidden;
+}
+
+.letterbox-scroll__logos-track {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+  width: max-content;
+  will-change: transform;
+}
+
+.letterbox-scroll__logo {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  opacity: 0.8;
+  transition: opacity var(--transition-fast);
+  filter: brightness(0) invert(1);
+}
+
+.letterbox-scroll__logo:hover {
+  opacity: 1;
+}
+
+@media (max-width: 767px) {
+  .letterbox-scroll__band {
+    height: 5vh;
+  }
+
+  .letterbox-scroll__message {
+    max-width: 95%;
+    font-size: clamp(2rem, 12vw, 15vw);
+  }
+
+  .letterbox-scroll__logo {
+    height: 30px;
+  }
+}
+
+@media (max-width: 479px) {
+  .letterbox-scroll__band {
+    height: 4vh;
+  }
+
+  .letterbox-scroll__logo {
+    height: 24px;
+  }
+}

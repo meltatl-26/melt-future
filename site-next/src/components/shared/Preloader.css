@@ -1,0 +1,22 @@
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-preloader);
+  background: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preloader__content {
+  text-align: center;
+  opacity: 0;
+}
+
+.preloader__logo {
+  font-family: var(--font-headline);
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.1em;
+}

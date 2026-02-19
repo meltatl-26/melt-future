@@ -5,15 +5,15 @@
 
 .hc-article {
   min-height: 100vh;
-  background: var(--color-black);
-  color: var(--color-white);
-  padding: var(--space-4xl) 0;
+  background: var(--black);
+  color: var(--white);
+  padding: var(--space-3xl) 0;
 }
 
 .hc-article__inner {
   max-width: 780px;
   margin: 0 auto;
-  padding: 0 var(--grid-gutter);
+  padding: 0 var(--gutter);
 }
 
 /* Back link */
@@ -26,11 +26,11 @@
   letter-spacing: 0.12em;
   color: rgba(255, 255, 255, 0.35);
   margin-bottom: var(--space-3xl);
-  transition: color var(--duration-fast) var(--ease-default);
+  transition: color 0.2s var(--ease-custom);
 }
 
 .hc-article__back:hover {
-  color: var(--color-white);
+  color: var(--white);
 }
 
 /* Header */
@@ -53,7 +53,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: var(--color-royal-blue);
+  color: var(--royal-blue);
   opacity: 0.7;
 }
 
@@ -73,7 +73,7 @@
   font-weight: 900;
   text-transform: uppercase;
   line-height: 1.05;
-  color: var(--color-white);
+  color: var(--white);
 }
 
 /* Article body */
@@ -93,7 +93,7 @@
   font-size: clamp(1.25rem, 2.5vw, 1.75rem);
   font-weight: 800;
   text-transform: uppercase;
-  color: var(--color-white);
+  color: var(--white);
   margin-top: var(--space-2xl);
   margin-bottom: var(--space-md);
 }
@@ -120,7 +120,7 @@
   left: 0;
   right: 0;
   height: 120px;
-  background: linear-gradient(to bottom, transparent, var(--color-black));
+  background: linear-gradient(to bottom, transparent, var(--black));
   pointer-events: none;
 }
 
@@ -149,7 +149,7 @@
   font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 900;
   text-transform: uppercase;
-  color: var(--color-white);
+  color: var(--white);
   margin-bottom: var(--space-sm);
 }
 
@@ -176,12 +176,12 @@
   background: transparent;
   border: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-  color: var(--color-white);
+  color: var(--white);
   font-family: 'Satoshi', sans-serif;
   font-size: 0.95rem;
   padding: var(--space-sm) 0;
   outline: none;
-  transition: border-color var(--duration-fast) var(--ease-default);
+  transition: border-color 0.2s var(--ease-custom);
   width: 100%;
   border-radius: 0;
   -webkit-appearance: none;
@@ -193,12 +193,12 @@
 
 .hc-article__gate-form input:focus,
 .hc-article__gate-form select:focus {
-  border-bottom-color: var(--color-royal-blue);
+  border-bottom-color: var(--royal-blue);
 }
 
 .hc-article__gate-form select option {
-  background: var(--color-gray-900);
-  color: var(--color-white);
+  background: var(--gray-900);
+  color: var(--white);
 }
 
 .hc-article__gate-submit {
@@ -208,16 +208,16 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: var(--color-white);
+  color: var(--white);
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.3);
   padding: var(--space-md) var(--space-xl);
   cursor: pointer;
-  transition: all var(--duration-normal) var(--ease-default);
+  transition: all 0.6s var(--ease-custom);
 }
 
 .hc-article__gate-submit:hover:not(:disabled) {
-  border-color: var(--color-white);
+  border-color: var(--white);
   background: rgba(255, 255, 255, 0.04);
 }
 
@@ -228,7 +228,7 @@
 
 .hc-article__gate-error {
   font-size: 0.875rem;
-  color: var(--color-coral);
+  color: var(--coral);
   margin-top: var(--space-sm);
 }
 
@@ -248,7 +248,7 @@
   font-size: 2rem;
   font-weight: 900;
   text-transform: uppercase;
-  color: var(--color-white);
+  color: var(--white);
 }
 
 .hc-article__not-found p {
@@ -261,17 +261,17 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--color-royal-blue);
-  transition: color var(--duration-fast);
+  color: var(--royal-blue);
+  transition: color 0.2s;
 }
 
 .hc-article__not-found a:hover {
-  color: var(--color-white);
+  color: var(--white);
 }
 
 /* Related section */
 .hc-article__related {
-  margin-top: var(--space-4xl);
+  margin-top: var(--space-3xl);
   padding-top: var(--space-3xl);
   border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
@@ -299,7 +299,7 @@
   padding: var(--space-lg);
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: var(--radius-sm);
-  transition: all var(--duration-normal) var(--ease-default);
+  transition: all 0.6s var(--ease-custom);
 }
 
 .hc-article__related-card:hover {
@@ -321,7 +321,7 @@
   font-weight: 800;
   text-transform: uppercase;
   line-height: 1.2;
-  color: var(--color-white);
+  color: var(--white);
 }
 
 .hc-article__related-meta {

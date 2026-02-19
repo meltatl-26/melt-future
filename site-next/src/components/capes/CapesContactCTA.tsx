@@ -1,12 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
+import TransitionLink from '@/components/shared/TransitionLink';
 import './CapesContactCTA.css';
 
 export function CapesContactCTA() {
   const [email, setEmail] = useState('');
-
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -27,7 +26,7 @@ export function CapesContactCTA() {
   };
 
   return (
-    <section className="capes-cta">
+    <section className="capes-cta" data-section-theme="dark">
       <div className="capes-cta__inner container">
         <div className="capes-cta__header">
           <h2 className="capes-cta__title">Ready to Execute?</h2>
@@ -35,29 +34,29 @@ export function CapesContactCTA() {
         </div>
 
         <div className="capes-cta__grid">
-          {/* Card 1 — Contact */}
+          {/* Card 1 -- Contact */}
           <div className="capes-cta__card">
             <h3 className="capes-cta__card-title">Start a Conversation</h3>
             <p className="capes-cta__card-desc">
               Tell us about your project and we&apos;ll respond within 24 hours.
             </p>
-            <Link href="/contact" className="capes-cta__btn">
+            <TransitionLink to="/contact" className="capes-cta__btn">
               Get In Touch
-            </Link>
+            </TransitionLink>
           </div>
 
-          {/* Card 2 — Scoper */}
+          {/* Card 2 -- Scoper */}
           <div className="capes-cta__card">
             <h3 className="capes-cta__card-title">Scope Your Project</h3>
             <p className="capes-cta__card-desc">
               Use our project scoper to get a tailored recommendation.
             </p>
-            <Link href="/scope-your-project" className="capes-cta__btn">
+            <TransitionLink to="/scope-your-project" className="capes-cta__btn">
               Start Scoping
-            </Link>
+            </TransitionLink>
           </div>
 
-          {/* Card 3 — Newsletter */}
+          {/* Card 3 -- Newsletter */}
           <div className="capes-cta__card">
             <h3 className="capes-cta__card-title">Subscribe to Insights</h3>
             <p className="capes-cta__card-desc">

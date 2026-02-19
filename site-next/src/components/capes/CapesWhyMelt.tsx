@@ -1,8 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ChevronDown } from 'lucide-react';
+import { useReducedMotion } from '@/hooks/useReducedMotion';
 import './CapesWhyMelt.css';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const FAQ_ITEMS = [
   {
@@ -34,20 +39,45 @@ const FAQ_ITEMS = [
 
 export function CapesWhyMelt() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const listRef = useRef<HTMLDivElement>(null);
+  const prefersReduced = useReducedMotion();
 
   const toggle = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
+  useEffect(() => {
+    if (prefersReduced || !listRef.current) return;
+
+    const items = listRef.current.querySelectorAll('.capes-why__item');
+
+    gsap.from(items, {
+      scrollTrigger: {
+        trigger: listRef.current,
+        start: 'top 80%',
+        once: true,
+      },
+      opacity: 0,
+      y: 30,
+      duration: 0.6,
+      stagger: 0.1,
+      ease: 'power2.out',
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((st) => st.kill());
+    };
+  }, [prefersReduced]);
+
   return (
-    <section className="capes-why">
+    <section className="capes-why" data-section-theme="light">
       <div className="capes-why__inner container">
         <div className="capes-why__header">
           <span className="capes-why__label">Common Questions</span>
           <h2 className="capes-why__title">Why MELT?</h2>
         </div>
 
-        <div className="capes-why__list">
+        <div className="capes-why__list" ref={listRef}>
           {FAQ_ITEMS.map((item, index) => {
             const isOpen = openIndex === index;
             const contentId = `capes-why-content-${index}`;

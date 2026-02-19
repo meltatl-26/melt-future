@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { VersionProvider } from "@/lib/version-context";
 import { VersionLayout } from "@/components/shared/VersionLayout";
 import "@/styles/shared/globals.css";
+import "@/styles/shared/typography.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://meltatl.com"),

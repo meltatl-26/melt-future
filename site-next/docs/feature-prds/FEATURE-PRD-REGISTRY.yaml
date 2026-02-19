@@ -1,0 +1,28 @@
+# FEATURE PRD REGISTRY
+# Machine-readable. Used to track feature status across sessions.
+# Status: not_started | in_progress | pending_review | complete
+
+features:
+  - id: "F-001"
+    name: "Capes Homepage"
+    file: "F-001-capes-homepage.md"
+    status: "in_progress"
+    score: 7
+    last_updated: "2026-02-19"
+    notes: "Bug fixes applied 2026-02-19 (logo marquee, no duplicate section). Needs user visual audit."
+
+  - id: "F-002"
+    name: "HC Homepage (accordion.net.au rebuild)"
+    file: "F-002-hc-homepage.md"
+    status: "not_started"
+    score: 0
+    last_updated: "2026-02-19"
+    notes: "Complete rebuild required. Current implementation is wrong structure. Must follow accordion.net.au 8-section layout."
+
+  - id: "F-003"
+    name: "VersionToggle (both versions)"
+    file: "F-003-version-toggle.md"
+    status: "in_progress"
+    score: 5
+    last_updated: "2026-02-19"
+    notes: "HC toggle CSS fix applied 2026-02-19. Awaiting user confirmation toggle is visible and functional in V2."

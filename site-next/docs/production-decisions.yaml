@@ -1,0 +1,88 @@
+# PRODUCTION DECISIONS
+# Machine-readable contract. These are non-negotiable behaviors.
+# Format: decision: value | reason: why | owner: who-decided | date: when
+
+version: "1.0"
+project: melt-future/site-next
+last_updated: "2026-02-19"
+
+---
+
+tokens:
+  - decision: "All CSS must use tokens from globals.css WITHOUT --color-* prefix"
+    correct: ["--black", "--white", "--royal-blue", "--gray-900", "--container", "--gutter"]
+    forbidden: ["--color-black", "--color-white", "--container-max", "--grid-gutter", "--space-4xl", "--duration-normal", "--ease-default"]
+    reason: "globals.css defines tokens without prefix; --color-* tokens are undefined and cause invisible/broken UI"
+    date: "2026-02-19"
+
+animations:
+  - decision: "All entrance animations use GSAP, never CSS @keyframes"
+    exception: "CSS @keyframes only for infinite loops (spinners, marquees if not GSAP)"
+    reason: "GSAP is the established pattern; mixing causes inconsistency and conflicts with ScrollTrigger"
+    date: "initial"
+
+  - decision: "Every useEffect with GSAP must return cleanup"
+    required: ["splits.forEach(s => s.revert())", "ScrollTrigger.kill()"]
+    reason: "Memory leaks and stale triggers break scroll behavior on navigation"
+    date: "initial"
+
+  - decision: "SplitType always called with .revert() in cleanup"
+    reason: "Prevents DOM pollution across route changes"
+    date: "initial"
+
+  - decision: "Every animated component checks useReducedMotion"
+    reason: "Accessibility requirement"
+    date: "initial"
+
+api_routes:
+  - decision: "NEVER modify /api/contact, /api/subscribe, /api/gate, /api/scoper"
+    reason: "Live Mailchimp integrations in production — breakage loses leads"
+    date: "initial"
+
+commits:
+  - decision: "Never commit without user typing 'rocket' or '/rocket'"
+    reason: "User-verified changes only — no silent deploys"
+    date: "2026-02-19"
+
+  - decision: "Always verify git identity before commit"
+    commands: ["gh auth status (must: meltatl-26)", "vercel whoami (must: meltatl-26)", "git config user.email (must: chrisatmelt@gmail.com)"]
+    date: "initial"
+
+versioning:
+  - decision: "Version A (capes) is default — renders when no localStorage entry"
+    reason: "Most users see the enterprise presentation first"
+    date: "initial"
+
+  - decision: "VersionToggle must work in BOTH versions"
+    reason: "Users can switch. Getting stuck in one version kills UX."
+    date: "2026-02-19"
+
+homepage_sections:
+  version_a:
+    - decision: "NO CapesClientLogos section on homepage"
+      reason: "Logo marquee is integrated into LetterboxScroll hero. Separate section is duplicate."
+      date: "2026-02-19"
+    order: ["CapesLetterboxScroll", "CapesServicesWheel", "CapesStats", "CapesFeaturedWork", "CapesWhyMelt", "CapesTestimonials", "CapesContactCTA"]
+
+  version_b:
+    - decision: "HC homepage must follow accordion.net.au structure 1:1 with Melt content"
+      reason: "User directive: 'bones are fully wrong, get the structure right first'"
+      date: "2026-02-19"
+    order: ["HCHero", "HCStatsBar", "HCIntroduction", "HCWorkSlider", "HCAboutInterlude", "HCWorkGrid", "HCMission", "HCTeamRoster"]
+
+hero:
+  - decision: "V2 hero word is EXECUTION"
+    reason: "User confirmed: matches Melt's core positioning"
+    date: "2026-02-19"
+
+  - decision: "V2 hero font size minimum 25vw"
+    reason: "Matches accordion.net.au scale — must be visually massive"
+    date: "2026-02-19"
+
+session_protocol:
+  - decision: "Read PRODUCTION-COMPACTION-HANDOFF.md first at session start"
+    date: "2026-02-19"
+  - decision: "Log every file read AND every change made in docs/plans/YYYY-MM-DD-session.md"
+    date: "2026-02-19"
+  - decision: "Update PRODUCTION-COMPACTION-HANDOFF.md before session ends"
+    date: "2026-02-19"

@@ -1,59 +1,73 @@
 'use client';
 
+import { useRef, useEffect } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useReducedMotion } from '@/hooks/useReducedMotion';
+import { useCharacterReveal } from '@/hooks/useCharacterReveal';
 import Counter from '@/components/shared/Counter';
 import './CapesStats.css';
 
-const STATS = [
-  { target: 26, suffix: '+', label: 'Years' },
-  { target: 10, suffix: 'K+', label: 'Events Produced' },
-  { target: 19, suffix: '', label: 'Final Fours' },
-  { target: 22, suffix: '', label: 'Year Coca-Cola Partnership' },
-];
+gsap.registerPlugin(ScrollTrigger);
 
-const PROOF_POINTS = [
-  '$300M Arena Deal — City of Mobile',
-  '560% ROI — Bath & Body Works',
-  '2,563% ROI — Comfort Colors',
-  '1.87M Impressions — Ghirardelli Tour',
-  '3,672% Influencer ROI — Dogsters',
-  '$766K Earned Media Value',
+const stats = [
+  { target: 26, label: 'Years Executing', suffix: '' },
+  { target: 10000, label: 'Events Produced', suffix: '+' },
+  { target: 19, label: 'Final Fours', suffix: '' },
+  { target: 40, label: 'Industry Awards', suffix: '+' },
 ];
 
 export function CapesStats() {
+  const gridRef = useRef<HTMLDivElement>(null);
+  const prefersReduced = useReducedMotion();
+  const headingRef = useCharacterReveal({ triggerStart: 'top 80%', stagger: 0.03 });
+
+  useEffect(() => {
+    if (prefersReduced || !gridRef.current) return;
+
+    const items = gridRef.current.querySelectorAll('.stats__item');
+
+    gsap.from(items, {
+      scrollTrigger: {
+        trigger: gridRef.current,
+        start: 'top 70%',
+        once: true,
+      },
+      opacity: 0,
+      y: 40,
+      duration: 0.8,
+      stagger: 0.15,
+      ease: 'power2.out',
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((st) => st.kill());
+    };
+  }, [prefersReduced]);
+
   return (
-    <section className="capes-stats">
-      <div className="capes-stats__inner container">
-        <div className="capes-stats__header">
-          <span className="capes-stats__label">By The Numbers</span>
-          <h2 className="capes-stats__title">26 Years of Execution</h2>
+    <section className="stats section-dark grain" data-section-theme="dark">
+      <div className="container">
+        <div className="stats__header">
+          <span className="eyebrow stats__eyebrow">EXECUTING</span>
+          <h2 ref={headingRef as React.Ref<HTMLHeadingElement>} className="stats__heading">
+            By The Numbers
+          </h2>
         </div>
 
-        <div className="capes-stats__grid">
-          {STATS.map((stat) => (
-            <div key={stat.label} className="capes-stats__card">
-              <span className="capes-stats__number">
+        <div className="stats__grid" ref={gridRef}>
+          {stats.map((stat) => (
+            <div key={stat.label} className="stats__item">
+              <span className="stats__number">
                 <Counter
                   target={stat.target}
                   suffix={stat.suffix}
                   duration={2.5}
-                  className="capes-stats__counter"
                 />
               </span>
-              <span className="capes-stats__card-label">{stat.label}</span>
+              <span className="stats__label">{stat.label}</span>
             </div>
           ))}
-        </div>
-
-        <div className="capes-stats__proof">
-          <h3 className="capes-stats__proof-title">Proof Points</h3>
-          <div className="capes-stats__proof-grid">
-            {PROOF_POINTS.map((point) => (
-              <div key={point} className="capes-stats__proof-item">
-                <span className="capes-stats__proof-dot" aria-hidden="true" />
-                <span className="capes-stats__proof-text">{point}</span>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </section>

@@ -1,8 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import gsap from 'gsap';
 import { useVersion } from '@/lib/version-context';
+import { useCharacterReveal } from '@/hooks/useCharacterReveal';
+import { useReducedMotion } from '@/hooks/useReducedMotion';
+import TransitionLink from '@/components/shared/TransitionLink';
 import './scoper.css';
 import './scoper-hc.css';
 
@@ -49,6 +53,9 @@ const QUESTION_LABELS = [
 ];
 
 function HandcraftedScoper() {
+  const prefersReduced = useReducedMotion();
+  const headingRef = useCharacterReveal();
+  const stepRef = useRef<HTMLDivElement>(null);
   const [step, setStep] = useState(0);
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -63,6 +70,16 @@ function HandcraftedScoper() {
     goals: '',
   });
 
+  // Animate step content in on step change
+  useEffect(() => {
+    if (prefersReduced || !stepRef.current) return;
+    gsap.fromTo(
+      stepRef.current,
+      { opacity: 0, x: 20 },
+      { opacity: 1, x: 0, duration: 0.3, ease: 'power2.out' }
+    );
+  }, [step, prefersReduced]);
+
   const update = (field: keyof ScoperData, value: string) => {
     setData((prev) => ({ ...prev, [field]: value }));
   };
@@ -74,7 +91,7 @@ function HandcraftedScoper() {
     if (step === 1) return !!data.name && !!data.email && !!data.company;
     if (step === 2) return !!data.timeline;
     if (step === 3) return !!data.teamSize;
-    if (step === 4) return true; // goals is optional
+    if (step === 4) return true;
     return false;
   };
 
@@ -115,7 +132,7 @@ function HandcraftedScoper() {
 
   if (submitted) {
     return (
-      <section className="hc-scoper">
+      <section className="hc-scoper" data-section-theme="dark">
         <div className="hc-scoper__success">
           <h1 className="hc-scoper__success-title">We&apos;ll Be<br />In Touch</h1>
           <p className="hc-scoper__success-text">
@@ -130,8 +147,25 @@ function HandcraftedScoper() {
   }
 
   return (
-    <section className="hc-scoper">
+    <section className="hc-scoper" data-section-theme="dark">
       <div className="hc-scoper__container">
+        {/* Main heading with character reveal */}
+        <h1
+          className="hc-scoper__heading"
+          ref={headingRef as React.Ref<HTMLHeadingElement>}
+          style={{
+            fontFamily: "'Industry', sans-serif",
+            fontSize: 'clamp(2rem, 5vw, 3.5rem)',
+            fontWeight: 900,
+            textTransform: 'uppercase',
+            letterSpacing: '0.05em',
+            color: 'var(--color-white, #fff)',
+            marginBottom: 'var(--space-lg, 48px)',
+          }}
+        >
+          Scope Your Project
+        </h1>
+
         {/* Progress dots */}
         <div className="hc-scoper__progress">
           {Array.from({ length: totalSteps }).map((_, i) => (
@@ -144,138 +178,136 @@ function HandcraftedScoper() {
           ))}
         </div>
 
-        {/* Step 0: Project Type */}
-        {step === 0 && (
-          <div className="hc-scoper__question">
-            <span className="hc-scoper__question-label">{QUESTION_LABELS[0]}</span>
-            <h2 className="hc-scoper__question-text">What Are<br />You Building?</h2>
-            <div className="hc-scoper__options">
-              {PROJECT_TYPES.map((type) => (
-                <button
-                  key={type.id}
-                  type="button"
-                  className={`hc-scoper__option ${data.projectType === type.id ? 'hc-scoper__option--selected' : ''}`}
-                  onClick={() => update('projectType', type.id)}
-                >
-                  <span className="hc-scoper__option-title">{type.title}</span>
-                  <span className="hc-scoper__option-desc">{type.desc}</span>
-                </button>
-              ))}
+        {/* Step content — single wrapper, GSAP animates on step change */}
+        <div ref={stepRef}>
+          {step === 0 && (
+            <div className="hc-scoper__question">
+              <span className="hc-scoper__question-label">{QUESTION_LABELS[0]}</span>
+              <h2 className="hc-scoper__question-text">What Are<br />You Building?</h2>
+              <div className="hc-scoper__options">
+                {PROJECT_TYPES.map((type) => (
+                  <button
+                    key={type.id}
+                    type="button"
+                    className={`hc-scoper__option ${data.projectType === type.id ? 'hc-scoper__option--selected' : ''}`}
+                    onClick={() => update('projectType', type.id)}
+                  >
+                    <span className="hc-scoper__option-title">{type.title}</span>
+                    <span className="hc-scoper__option-desc">{type.desc}</span>
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
-        )}
+          )}
 
-        {/* Step 1: Contact Info */}
-        {step === 1 && (
-          <div className="hc-scoper__question">
-            <span className="hc-scoper__question-label">{QUESTION_LABELS[1]}</span>
-            <h2 className="hc-scoper__question-text">Who Are You?</h2>
-            <div className="hc-scoper__fields">
-              <div className="hc-scoper__field">
-                <label htmlFor="hc-scoper-name">Name *</label>
-                <input
-                  id="hc-scoper-name"
-                  type="text"
-                  value={data.name}
-                  onChange={(e) => update('name', e.target.value)}
-                  placeholder="Your name"
-                  required
-                />
-              </div>
-              <div className="hc-scoper__field">
-                <label htmlFor="hc-scoper-email">Email *</label>
-                <input
-                  id="hc-scoper-email"
-                  type="email"
-                  value={data.email}
-                  onChange={(e) => update('email', e.target.value)}
-                  placeholder="you@company.com"
-                  required
-                />
-              </div>
-              <div className="hc-scoper__field">
-                <label htmlFor="hc-scoper-company">Company *</label>
-                <input
-                  id="hc-scoper-company"
-                  type="text"
-                  value={data.company}
-                  onChange={(e) => update('company', e.target.value)}
-                  placeholder="Your company"
-                  required
-                />
-              </div>
-              <div className="hc-scoper__field">
-                <label htmlFor="hc-scoper-role">Role</label>
-                <input
-                  id="hc-scoper-role"
-                  type="text"
-                  value={data.role}
-                  onChange={(e) => update('role', e.target.value)}
-                  placeholder="Your title / role"
-                />
+          {step === 1 && (
+            <div className="hc-scoper__question">
+              <span className="hc-scoper__question-label">{QUESTION_LABELS[1]}</span>
+              <h2 className="hc-scoper__question-text">Who Are You?</h2>
+              <div className="hc-scoper__fields">
+                <div className="hc-scoper__field">
+                  <label htmlFor="hc-scoper-name">Name *</label>
+                  <input
+                    id="hc-scoper-name"
+                    type="text"
+                    value={data.name}
+                    onChange={(e) => update('name', e.target.value)}
+                    placeholder="Your name"
+                    required
+                  />
+                </div>
+                <div className="hc-scoper__field">
+                  <label htmlFor="hc-scoper-email">Email *</label>
+                  <input
+                    id="hc-scoper-email"
+                    type="email"
+                    value={data.email}
+                    onChange={(e) => update('email', e.target.value)}
+                    placeholder="you@company.com"
+                    required
+                  />
+                </div>
+                <div className="hc-scoper__field">
+                  <label htmlFor="hc-scoper-company">Company *</label>
+                  <input
+                    id="hc-scoper-company"
+                    type="text"
+                    value={data.company}
+                    onChange={(e) => update('company', e.target.value)}
+                    placeholder="Your company"
+                    required
+                  />
+                </div>
+                <div className="hc-scoper__field">
+                  <label htmlFor="hc-scoper-role">Role</label>
+                  <input
+                    id="hc-scoper-role"
+                    type="text"
+                    value={data.role}
+                    onChange={(e) => update('role', e.target.value)}
+                    placeholder="Your title / role"
+                  />
+                </div>
               </div>
             </div>
-          </div>
-        )}
+          )}
 
-        {/* Step 2: Timeline */}
-        {step === 2 && (
-          <div className="hc-scoper__question">
-            <span className="hc-scoper__question-label">{QUESTION_LABELS[2]}</span>
-            <h2 className="hc-scoper__question-text">When Do You<br />Need It?</h2>
-            <div className="hc-scoper__options">
-              {TIMELINE_OPTIONS.map((opt) => (
-                <button
-                  key={opt}
-                  type="button"
-                  className={`hc-scoper__option ${data.timeline === opt ? 'hc-scoper__option--selected' : ''}`}
-                  onClick={() => update('timeline', opt)}
-                >
-                  <span className="hc-scoper__option-title">{opt}</span>
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Step 3: Team Size */}
-        {step === 3 && (
-          <div className="hc-scoper__question">
-            <span className="hc-scoper__question-label">{QUESTION_LABELS[3]}</span>
-            <h2 className="hc-scoper__question-text">How Big Is<br />Your Team?</h2>
-            <div className="hc-scoper__options">
-              {TEAM_SIZE_OPTIONS.map((opt) => (
-                <button
-                  key={opt}
-                  type="button"
-                  className={`hc-scoper__option ${data.teamSize === opt ? 'hc-scoper__option--selected' : ''}`}
-                  onClick={() => update('teamSize', opt)}
-                >
-                  <span className="hc-scoper__option-title">{opt}</span>
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Step 4: Goals */}
-        {step === 4 && (
-          <div className="hc-scoper__question">
-            <span className="hc-scoper__question-label">{QUESTION_LABELS[4]}</span>
-            <h2 className="hc-scoper__question-text">What Are Your<br />Goals?</h2>
-            <div className="hc-scoper__fields">
-              <div className="hc-scoper__field">
-                <label htmlFor="hc-scoper-goals">Tell us what you&apos;re looking to achieve</label>
-                <textarea
-                  id="hc-scoper-goals"
-                  value={data.goals}
-                  onChange={(e) => update('goals', e.target.value)}
-                  placeholder="Brand awareness, sampling reach, content creation, community engagement..."
-                />
+          {step === 2 && (
+            <div className="hc-scoper__question">
+              <span className="hc-scoper__question-label">{QUESTION_LABELS[2]}</span>
+              <h2 className="hc-scoper__question-text">When Do You<br />Need It?</h2>
+              <div className="hc-scoper__options">
+                {TIMELINE_OPTIONS.map((opt) => (
+                  <button
+                    key={opt}
+                    type="button"
+                    className={`hc-scoper__option ${data.timeline === opt ? 'hc-scoper__option--selected' : ''}`}
+                    onClick={() => update('timeline', opt)}
+                  >
+                    <span className="hc-scoper__option-title">{opt}</span>
+                  </button>
+                ))}
               </div>
             </div>
-          </div>
-        )}
+          )}
+
+          {step === 3 && (
+            <div className="hc-scoper__question">
+              <span className="hc-scoper__question-label">{QUESTION_LABELS[3]}</span>
+              <h2 className="hc-scoper__question-text">How Big Is<br />Your Team?</h2>
+              <div className="hc-scoper__options">
+                {TEAM_SIZE_OPTIONS.map((opt) => (
+                  <button
+                    key={opt}
+                    type="button"
+                    className={`hc-scoper__option ${data.teamSize === opt ? 'hc-scoper__option--selected' : ''}`}
+                    onClick={() => update('teamSize', opt)}
+                  >
+                    <span className="hc-scoper__option-title">{opt}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {step === 4 && (
+            <div className="hc-scoper__question">
+              <span className="hc-scoper__question-label">{QUESTION_LABELS[4]}</span>
+              <h2 className="hc-scoper__question-text">What Are Your<br />Goals?</h2>
+              <div className="hc-scoper__fields">
+                <div className="hc-scoper__field">
+                  <label htmlFor="hc-scoper-goals">Tell us what you&apos;re looking to achieve</label>
+                  <textarea
+                    id="hc-scoper-goals"
+                    value={data.goals}
+                    onChange={(e) => update('goals', e.target.value)}
+                    placeholder="Brand awareness, sampling reach, content creation, community engagement..."
+                  />
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
 
         {/* Navigation */}
         <div className="hc-scoper__nav">
@@ -307,6 +339,8 @@ function HandcraftedScoper() {
 }
 
 function CapesScoper() {
+  const prefersReduced = useReducedMotion();
+  const headingRef = useCharacterReveal();
   const [step, setStep] = useState(1);
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -359,9 +393,12 @@ function CapesScoper() {
     }
   };
 
+  // suppress unused warning
+  void prefersReduced;
+
   if (submitted) {
     return (
-      <section className="capes-scoper">
+      <section className="capes-scoper" data-section-theme="light">
         <div className="container">
           <div className="capes-scoper__card">
             <div className="capes-scoper__success">
@@ -371,9 +408,9 @@ function CapesScoper() {
                 Our team will review your submission and get back to you within 24 hours
                 with a tailored recommendation.
               </p>
-              <Link href="/work" className="capes-scoper__btn capes-scoper__btn--next">
+              <TransitionLink to="/work" className="capes-scoper__btn capes-scoper__btn--next">
                 Explore Our Work
-              </Link>
+              </TransitionLink>
             </div>
           </div>
         </div>
@@ -384,9 +421,9 @@ function CapesScoper() {
   return (
     <section className="capes-scoper">
       <div className="container">
-        <div className="capes-scoper__header">
+        <div className="capes-scoper__header" data-section-theme="dark">
           <span className="capes-scoper__label">Project Scoper</span>
-          <h1 className="capes-scoper__title">Scope Your Project</h1>
+          <h1 className="capes-scoper__title" ref={headingRef as React.Ref<HTMLHeadingElement>}>Scope Your Project</h1>
           <p className="capes-scoper__subtitle">
             Tell us about your project in 3 quick steps and we&apos;ll follow up with a tailored recommendation.
           </p>
@@ -411,7 +448,7 @@ function CapesScoper() {
           ))}
         </div>
 
-        <div className="capes-scoper__card">
+        <div className="capes-scoper__card" data-section-theme="light">
           {/* Step 1: Project Type */}
           {step === 1 && (
             <>

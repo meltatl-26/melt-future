@@ -1,7 +1,7 @@
 .capes-cta {
-  background: var(--color-navy);
-  color: var(--color-white);
-  padding: var(--space-4xl) 0;
+  padding: var(--space-2xl) 0;
+  background: var(--royal-blue);
+  color: var(--white);
 }
 
 .capes-cta__inner {
@@ -15,16 +15,16 @@
 }
 
 .capes-cta__title {
-  font-family: 'Industry', sans-serif;
+  font-family: var(--font-headline);
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 900;
   line-height: 1.1;
-  color: var(--color-white);
+  color: var(--white);
   margin: 0 0 var(--space-sm) 0;
 }
 
 .capes-cta__subtitle {
-  font-family: 'Satoshi', sans-serif;
+  font-family: var(--font-body);
   font-size: 1.125rem;
   color: rgba(255, 255, 255, 0.6);
   margin: 0;
@@ -37,37 +37,37 @@
   gap: var(--space-lg);
 }
 
-/* Cards — glass effect */
+/* Cards -- glass effect */
 .capes-cta__card {
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius-md);
   padding: var(--space-xl);
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
-  transition: background var(--duration-fast) var(--ease-default),
-              border-color var(--duration-fast) var(--ease-default);
+  transition: background var(--transition-fast),
+              border-color var(--transition-fast);
 }
 
 .capes-cta__card:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.24);
 }
 
 .capes-cta__card-title {
-  font-family: 'Industry', sans-serif;
+  font-family: var(--font-headline);
   font-size: 1.25rem;
   font-weight: 800;
-  color: var(--color-white);
+  color: var(--white);
   margin: 0;
   line-height: 1.2;
 }
 
 .capes-cta__card-desc {
-  font-family: 'Satoshi', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.95rem;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.7);
@@ -81,24 +81,31 @@
   align-items: center;
   justify-content: center;
   padding: 12px 24px;
-  background: var(--color-lime);
-  color: var(--color-black);
+  background: var(--lime-green);
+  color: var(--black);
   border: none;
   border-radius: var(--radius-sm);
-  font-family: 'Industry', sans-serif;
+  font-family: var(--font-headline);
   font-size: 13px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   text-decoration: none;
   cursor: pointer;
-  transition: all var(--duration-fast) var(--ease-default);
+  transition: background var(--transition-fast),
+              transform var(--transition-fast);
   white-space: nowrap;
 }
 
 .capes-cta__btn:hover {
-  background: #e6ff33;
+  background: var(--lime-green-light);
   transform: translateY(-2px);
+}
+
+.capes-cta__btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
 }
 
 /* Newsletter form */
@@ -113,11 +120,11 @@
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: var(--radius-sm);
-  color: var(--color-white);
-  font-family: 'Satoshi', sans-serif;
+  color: var(--white);
+  font-family: var(--font-body);
   font-size: 0.875rem;
   outline: none;
-  transition: border-color var(--duration-fast) var(--ease-default);
+  transition: border-color var(--transition-fast);
 }
 
 .capes-cta__input::placeholder {
@@ -125,7 +132,15 @@
 }
 
 .capes-cta__input:focus {
-  border-color: var(--color-lime);
+  border-color: var(--lime-green);
+}
+
+/* Success message */
+.capes-cta__success {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--lime-green);
+  margin: 0;
 }
 
 /* Responsive */
@@ -139,7 +154,7 @@
 
 @media (max-width: 767px) {
   .capes-cta {
-    padding: var(--space-3xl) 0;
+    padding: var(--space-xl) 0;
   }
 
   .capes-cta__card {

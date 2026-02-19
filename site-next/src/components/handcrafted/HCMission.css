@@ -1,0 +1,34 @@
+/* =============================================
+   HC Mission — Full-width statement
+   ============================================= */
+
+.hc-mission {
+  background: var(--black);
+  padding: var(--space-3xl) 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.hc-mission__inner {
+  max-width: var(--container-wide);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.hc-mission__text {
+  font-family: 'Industry', sans-serif;
+  font-size: clamp(2.5rem, 7vw, 7rem);
+  font-weight: 900;
+  line-height: 0.95;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  max-width: 18ch;
+}
+
+@media (max-width: 767px) {
+  .hc-mission__text {
+    font-size: clamp(2rem, 10vw, 5rem);
+    max-width: none;
+  }
+}

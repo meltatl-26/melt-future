@@ -1,10 +1,17 @@
 'use client';
 
-import { useState, type FormEvent } from 'react';
+import React, { useState, useEffect, useRef, type FormEvent } from 'react';
 import Link from 'next/link';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useVersion } from '@/lib/version-context';
+import { useCharacterReveal } from '@/hooks/useCharacterReveal';
+import { useReducedMotion } from '@/hooks/useReducedMotion';
+import TransitionLink from '@/components/shared/TransitionLink';
 import './contact.css';
 import './contact-hc.css';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const PROJECT_TYPES = [
   'Experiential Event',
@@ -18,6 +25,9 @@ const PROJECT_TYPES = [
 type FormStatus = 'idle' | 'submitting' | 'success' | 'error';
 
 function HandcraftedContact() {
+  const prefersReduced = useReducedMotion();
+  const headingRef = useCharacterReveal({ stagger: 0.04, duration: 1 });
+  const formRef = useRef<HTMLFormElement>(null);
   const [status, setStatus] = useState<FormStatus>('idle');
   const [formData, setFormData] = useState({
     name: '',
@@ -27,6 +37,21 @@ function HandcraftedContact() {
     projectType: '',
     message: '',
   });
+
+  useEffect(() => {
+    if (prefersReduced) return;
+
+    // Form rows stagger entrance
+    if (formRef.current) {
+      const rows = formRef.current.querySelectorAll('.hc-contact__form-row, .hc-contact__field');
+      gsap.from(rows, {
+        opacity: 0, y: 30, stagger: 0.1, duration: 0.7, ease: 'power2.out',
+        scrollTrigger: { trigger: formRef.current, start: 'top 80%', once: true },
+      });
+    }
+
+    return () => { ScrollTrigger.getAll().forEach(st => st.kill()); };
+  }, [prefersReduced]);
 
   function handleChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -63,7 +88,7 @@ function HandcraftedContact() {
 
   if (status === 'success') {
     return (
-      <section className="hc-contact">
+      <section className="hc-contact" data-section-theme="dark">
         <div className="hc-contact__success">
           <h1 className="hc-contact__success-title">We&apos;ll Be<br />In Touch</h1>
           <p className="hc-contact__success-text">
@@ -75,10 +100,10 @@ function HandcraftedContact() {
   }
 
   return (
-    <section className="hc-contact">
+    <section className="hc-contact" data-section-theme="dark">
       {/* Hero */}
       <div className="hc-contact__hero">
-        <h1 className="hc-contact__hero-title">Let&apos;s Talk</h1>
+        <h1 className="hc-contact__hero-title" ref={headingRef as React.Ref<HTMLHeadingElement>}>Let&apos;s Talk</h1>
         <p className="hc-contact__hero-subtitle">
           Ready to turn your next idea into an unforgettable experience?
         </p>
@@ -86,7 +111,7 @@ function HandcraftedContact() {
 
       {/* Form */}
       <div className="hc-contact__form-section">
-        <form className="hc-contact__form" onSubmit={handleSubmit}>
+        <form className="hc-contact__form" onSubmit={handleSubmit} ref={formRef}>
           <div className="hc-contact__form-row">
             <div className="hc-contact__field">
               <label htmlFor="hc-contact-name">Name</label>
@@ -222,6 +247,8 @@ function HandcraftedContact() {
 
 function CapesContact() {
   const [status, setStatus] = useState<FormStatus>('idle');
+  const prefersReduced = useReducedMotion();
+  const headingRef = useCharacterReveal();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -268,15 +295,15 @@ function CapesContact() {
     <section className="capes-contact">
       <div className="container">
         {/* Hero */}
-        <div className="capes-contact__hero">
+        <div className="capes-contact__hero" data-section-theme="dark">
           <span className="capes-contact__label">Contact</span>
-          <h1 className="capes-contact__title">Let&apos;s Talk</h1>
+          <h1 className="capes-contact__title" ref={headingRef as React.Ref<HTMLHeadingElement>}>Let&apos;s Talk</h1>
           <p className="capes-contact__subtitle">
             Ready to turn your next idea into an unforgettable experience?
           </p>
         </div>
 
-        <div className="capes-contact__layout">
+        <div className="capes-contact__layout" data-section-theme="light">
           {/* Form */}
           <form className="capes-contact__form" onSubmit={handleSubmit}>
             <div className="capes-contact__form-row">
@@ -412,9 +439,9 @@ function CapesContact() {
               <p className="capes-contact__scoper-text">
                 Use our Project Scoper to get an instant ballpark estimate for your experiential marketing project.
               </p>
-              <Link href="/scope-your-project" className="capes-contact__scoper-link">
+              <TransitionLink to="/scope-your-project" className="capes-contact__scoper-link">
                 Try the Project Scoper
-              </Link>
+              </TransitionLink>
             </div>
           </aside>
         </div>

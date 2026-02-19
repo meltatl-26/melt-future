@@ -1,6 +1,8 @@
+/* CapesWhyMelt — Off-white bg, accordion FAQ, GSAP stagger entrance */
+
 .capes-why {
-  background: #F5F5F5;
-  padding: var(--space-4xl) 0;
+  background: var(--off-white);
+  padding: var(--space-2xl) 0;
 }
 
 .capes-why__inner {
@@ -15,21 +17,21 @@
 
 .capes-why__label {
   display: inline-block;
-  font-family: 'Industry', sans-serif;
-  font-size: 12px;
+  font-family: var(--font-headline);
+  font-size: var(--eyebrow);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: var(--color-royal-blue);
+  color: var(--royal-blue);
   margin-bottom: var(--space-xs);
 }
 
 .capes-why__title {
-  font-family: 'Industry', sans-serif;
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-family: var(--font-headline);
+  font-size: var(--h2);
   font-weight: 900;
   line-height: 1.1;
-  color: var(--color-navy);
+  color: var(--navy);
   margin: 0;
 }
 
@@ -42,7 +44,7 @@
 
 .capes-why__item {
   border-bottom: 1px solid rgba(10, 10, 107, 0.1);
-  transition: background var(--duration-fast) var(--ease-default);
+  transition: background var(--transition-fast);
 }
 
 .capes-why__item:first-child {
@@ -68,30 +70,30 @@
 }
 
 .capes-why__question:focus-visible {
-  outline: 2px solid var(--color-royal-blue);
+  outline: 2px solid var(--royal-blue);
   outline-offset: -2px;
 }
 
 .capes-why__question-number {
-  font-family: 'Industry', sans-serif;
+  font-family: var(--font-headline);
   font-size: 0.75rem;
   font-weight: 700;
-  color: var(--color-royal-blue);
+  color: var(--royal-blue);
   flex-shrink: 0;
   width: 24px;
 }
 
 .capes-why__question-text {
-  font-family: 'Satoshi', sans-serif;
+  font-family: var(--font-body);
   font-size: 1.125rem;
   font-weight: 700;
-  color: var(--color-navy);
+  color: var(--navy);
   flex: 1;
   line-height: 1.3;
 }
 
 .capes-why__chevron {
-  color: var(--color-navy);
+  color: var(--navy);
   flex-shrink: 0;
   transition: transform 0.3s ease;
 }
@@ -114,10 +116,10 @@
 
 .capes-why__answer p {
   padding: 0 var(--space-md) 0 calc(24px + var(--space-md) + var(--space-md));
-  font-family: 'Satoshi', sans-serif;
+  font-family: var(--font-body);
   font-size: 1rem;
   line-height: 1.7;
-  color: var(--color-gray-600);
+  color: var(--gray-300);
   margin: 0;
   max-width: 60ch;
 }
@@ -125,7 +127,7 @@
 /* Responsive */
 @media (max-width: 767px) {
   .capes-why {
-    padding: var(--space-3xl) 0;
+    padding: var(--space-xl) 0;
   }
 
   .capes-why__question {

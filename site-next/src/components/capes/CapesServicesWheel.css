@@ -1,37 +1,40 @@
 .capes-wheel {
-  padding: var(--space-4xl) 0;
-  background: var(--color-white);
+  padding: var(--space-3xl) 0;
+  background: var(--navy);
+  position: relative;
 }
 
 .capes-wheel__header {
   text-align: center;
-  margin-bottom: var(--space-3xl);
+  margin-bottom: var(--space-2xl);
 }
 
 .capes-wheel__label {
   display: block;
   font-family: 'Industry', sans-serif;
-  font-size: 12px;
+  font-size: var(--eyebrow);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: var(--color-royal-blue);
+  color: var(--lime-green);
   margin-bottom: var(--space-sm);
 }
 
 .capes-wheel__title {
-  font-size: clamp(2rem, 4vw, 3rem);
-  color: var(--color-navy);
+  font-size: var(--section-display);
+  color: var(--white);
+  font-family: 'Industry', sans-serif;
+  font-weight: 900;
 }
 
 .capes-wheel__layout {
   display: grid;
   grid-template-columns: 400px 1fr;
-  gap: var(--space-3xl);
+  gap: var(--space-2xl);
   align-items: start;
 }
 
-/* Fixed-size wheel — NEVER moves or resizes */
+/* Fixed-size wheel — sticky while scrolling panel */
 .capes-wheel__graphic {
   position: sticky;
   top: 100px;
@@ -49,10 +52,11 @@
 }
 
 .capes-wheel__wedge:focus-visible path {
-  stroke: var(--color-royal-blue);
+  stroke: var(--lime-green);
   stroke-width: 3;
 }
 
+/* Service number tabs below wheel */
 .capes-wheel__tabs {
   display: flex;
   justify-content: center;
@@ -63,29 +67,31 @@
 .capes-wheel__tab {
   width: 40px;
   height: 40px;
-  border-radius: 8px;
-  border: 2px solid var(--color-gray-200);
-  background: var(--color-white);
+  border-radius: var(--radius-sm);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  background: transparent;
   font-family: 'Industry', sans-serif;
   font-weight: 700;
   font-size: 13px;
-  color: var(--color-gray-500);
-  transition: all var(--duration-fast) var(--ease-default);
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.2s var(--ease-custom);
 }
 
 .capes-wheel__tab--active {
-  color: var(--color-black);
+  color: var(--white);
   border-width: 2px;
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .capes-wheel__tab:hover {
-  color: var(--color-black);
-  border-color: var(--color-gray-400);
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 /* Independently scrollable detail panel */
 .capes-wheel__panel {
-  max-height: 500px;
+  max-height: 80vh;
   overflow-y: auto;
   padding-right: var(--space-md);
 }
@@ -95,17 +101,21 @@
 }
 
 .capes-wheel__panel::-webkit-scrollbar-track {
-  background: var(--color-gray-100);
+  background: rgba(255, 255, 255, 0.05);
   border-radius: 2px;
 }
 
 .capes-wheel__panel::-webkit-scrollbar-thumb {
-  background: var(--color-gray-300);
+  background: rgba(255, 255, 255, 0.2);
   border-radius: 2px;
 }
 
+.capes-wheel__panel::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
 .capes-wheel__panel-inner {
-  animation: panelFadeIn var(--duration-fast) var(--ease-default);
+  animation: panelFadeIn 0.3s var(--ease-custom);
 }
 
 @keyframes panelFadeIn {
@@ -121,7 +131,7 @@
 
 .capes-wheel__panel-number {
   font-family: 'Industry', sans-serif;
-  font-size: 48px;
+  font-size: var(--stat-number);
   font-weight: 900;
   line-height: 1;
   display: block;
@@ -129,22 +139,24 @@
 }
 
 .capes-wheel__panel-title {
-  font-size: 1.5rem;
-  color: var(--color-navy);
+  font-size: var(--h3);
+  color: var(--white);
+  font-family: 'Industry', sans-serif;
+  font-weight: 800;
   margin-bottom: var(--space-md);
 }
 
 .capes-wheel__panel-problem {
-  font-size: 1.1rem;
+  font-size: var(--body-lg);
   font-style: italic;
-  color: var(--color-gray-600);
+  color: rgba(255, 255, 255, 0.6);
   margin-bottom: var(--space-md);
   padding-left: var(--space-md);
-  border-left: 3px solid var(--color-royal-blue);
+  border-left: 3px solid var(--lime-green);
 }
 
 .capes-wheel__panel-desc {
-  color: var(--color-gray-600);
+  color: rgba(255, 255, 255, 0.7);
   line-height: 1.7;
   margin-bottom: var(--space-xl);
 }
@@ -152,11 +164,11 @@
 .capes-wheel__panel-capabilities h4,
 .capes-wheel__panel-proof h4 {
   font-family: 'Industry', sans-serif;
-  font-size: 11px;
+  font-size: var(--eyebrow);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--color-gray-400);
+  color: var(--lime-green);
   margin-bottom: var(--space-sm);
 }
 
@@ -172,16 +184,19 @@
   display: inline-block;
   padding: 6px 14px;
   border-radius: 20px;
-  background: var(--color-gray-100);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   font-size: 13px;
   font-weight: 500;
-  color: var(--color-gray-700);
-  transition: all var(--duration-fast);
+  color: rgba(255, 255, 255, 0.8);
+  transition: all 0.2s var(--ease-custom);
+  text-decoration: none;
 }
 
 .capes-wheel__panel-capabilities li a:hover {
-  background: var(--color-navy);
-  color: var(--color-white);
+  background: var(--lime-green);
+  border-color: var(--lime-green);
+  color: var(--navy);
 }
 
 .capes-wheel__panel-proof ul {
@@ -191,9 +206,9 @@
 
 .capes-wheel__panel-proof li {
   padding: var(--space-sm) 0;
-  border-bottom: 1px solid var(--color-gray-100);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   font-size: 14px;
-  color: var(--color-gray-700);
+  color: rgba(255, 255, 255, 0.7);
   font-weight: 500;
 }
 
@@ -205,12 +220,13 @@
   font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--color-royal-blue);
-  transition: color var(--duration-fast);
+  color: var(--lime-green);
+  text-decoration: none;
+  transition: color 0.2s var(--ease-custom);
 }
 
 .capes-wheel__panel-cta:hover {
-  color: var(--color-navy);
+  color: var(--white);
 }
 
 @media (max-width: 900px) {

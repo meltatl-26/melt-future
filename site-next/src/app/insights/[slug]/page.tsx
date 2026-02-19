@@ -1,9 +1,14 @@
 'use client';
 
-import { useState, useEffect, type FormEvent } from 'react';
+import React, { useState, useEffect, useRef, type FormEvent } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useVersion } from '@/lib/version-context';
+import { useCharacterReveal } from '@/hooks/useCharacterReveal';
+import { useReducedMotion } from '@/hooks/useReducedMotion';
+import TransitionLink from '@/components/shared/TransitionLink';
 import { getInsightBySlug, getRelatedInsights } from '@/data/insights';
 import type { Insight } from '@/data/insights';
 import {
@@ -14,6 +19,8 @@ import {
 } from '@/lib/gating';
 import './article.css';
 import './article-hc.css';
+
+gsap.registerPlugin(ScrollTrigger);
 
 function LockIcon() {
   return (
@@ -211,14 +218,14 @@ function GateOverlay({
 
 function RelatedCard({ insight }: { insight: Insight }) {
   return (
-    <Link href={`/insights/${insight.slug}`} className="capes-article__related-card">
+    <TransitionLink to={`/insights/${insight.slug}`} className="capes-article__related-card">
       <div className="capes-article__related-image" />
       <div className="capes-article__related-body">
         <span className="capes-article__related-category">{insight.category}</span>
         <h4 className="capes-article__related-title">{insight.title}</h4>
         <span className="capes-article__related-meta">{insight.readTime} read</span>
       </div>
-    </Link>
+    </TransitionLink>
   );
 }
 
@@ -423,6 +430,9 @@ function HcRelatedCard({ insight }: { insight: Insight }) {
 
 function HandcraftedArticle({ slug }: { slug: string }) {
   const insight = getInsightBySlug(slug);
+  const prefersReduced = useReducedMotion();
+  const heroHeadingRef = useCharacterReveal();
+  const relatedGridRef = useRef<HTMLDivElement>(null);
   const [unlocked, setUnlocked] = useState(false);
 
   useEffect(() => {
@@ -430,6 +440,21 @@ function HandcraftedArticle({ slug }: { slug: string }) {
       setUnlocked(canAccessContent(insight.tier));
     }
   }, [insight]);
+
+  useEffect(() => {
+    if (prefersReduced || !insight) return;
+
+    // Related cards stagger entrance
+    if (relatedGridRef.current) {
+      const cards = relatedGridRef.current.querySelectorAll('.hc-article__related-card');
+      gsap.from(cards, {
+        opacity: 0, y: 40, stagger: 0.15, duration: 0.8, ease: 'power2.out',
+        scrollTrigger: { trigger: relatedGridRef.current, start: 'top 80%', once: true },
+      });
+    }
+
+    return () => { ScrollTrigger.getAll().forEach(st => st.kill()); };
+  }, [prefersReduced, insight]);
 
   if (!insight) {
     return (
@@ -448,18 +473,18 @@ function HandcraftedArticle({ slug }: { slug: string }) {
   const related = getRelatedInsights(slug, 3);
 
   return (
-    <article className="hc-article">
+    <article className="hc-article" data-section-theme="dark">
       <div className="hc-article__inner">
         <Link href="/insights" className="hc-article__back">&larr; All Insights</Link>
 
         {/* Header */}
-        <header className="hc-article__header">
+        <header className="hc-article__header" data-section-theme="dark">
           <div className="hc-article__meta">
             <span className="hc-article__category">{insight.category}</span>
             <span className="hc-article__date">{formatDate(insight.date)}</span>
             <span className="hc-article__read-time">{insight.readTime} read</span>
           </div>
-          <h1 className="hc-article__heading">{insight.title}</h1>
+          <h1 className="hc-article__heading" ref={heroHeadingRef as React.Ref<HTMLHeadingElement>}>{insight.title}</h1>
         </header>
 
         {/* Content */}
@@ -478,9 +503,9 @@ function HandcraftedArticle({ slug }: { slug: string }) {
 
         {/* Related */}
         {related.length > 0 && (
-          <section className="hc-article__related">
+          <section className="hc-article__related" data-section-theme="dark">
             <h2 className="hc-article__related-heading">Related Insights</h2>
-            <div className="hc-article__related-grid">
+            <div className="hc-article__related-grid" ref={relatedGridRef}>
               {related.map((r) => (
                 <HcRelatedCard key={r.slug} insight={r} />
               ))}
@@ -495,12 +520,27 @@ function HandcraftedArticle({ slug }: { slug: string }) {
 function CapesArticle({ slug }: { slug: string }) {
   const insight = getInsightBySlug(slug);
   const [unlocked, setUnlocked] = useState(false);
+  const prefersReduced = useReducedMotion();
+  const heroHeadingRef = useCharacterReveal();
+  const relatedGridRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (insight) {
       setUnlocked(canAccessContent(insight.tier));
     }
   }, [insight]);
+
+  useEffect(() => {
+    if (prefersReduced || !insight) return;
+    if (relatedGridRef.current) {
+      const cards = relatedGridRef.current.querySelectorAll('.capes-article__related-card');
+      gsap.from(cards, {
+        opacity: 0, y: 40, stagger: 0.15, duration: 0.8, ease: 'power2.out',
+        scrollTrigger: { trigger: relatedGridRef.current, start: 'top 80%', once: true },
+      });
+    }
+    return () => { ScrollTrigger.getAll().forEach(st => st.kill()); };
+  }, [prefersReduced, insight]);
 
   if (!insight) {
     return (
@@ -509,9 +549,9 @@ function CapesArticle({ slug }: { slug: string }) {
         <p style={{ color: 'var(--color-gray-500)', margin: 'var(--space-md) 0' }}>
           The article &ldquo;{slug}&rdquo; doesn&apos;t exist.
         </p>
-        <Link href="/insights" style={{ color: 'var(--color-royal-blue)', fontWeight: 600 }}>
+        <TransitionLink to="/insights" style={{ color: 'var(--color-royal-blue)', fontWeight: 600 }}>
           &larr; Back to Insights
-        </Link>
+        </TransitionLink>
       </div>
     );
   }
@@ -523,20 +563,20 @@ function CapesArticle({ slug }: { slug: string }) {
   return (
     <article className="capes-article">
       <div className="container">
-        <Link href="/insights" className="capes-article__back">&larr; All Insights</Link>
+        <TransitionLink to="/insights" className="capes-article__back">&larr; All Insights</TransitionLink>
 
         {/* Header */}
-        <header className="capes-article__header">
+        <header className="capes-article__header" data-section-theme="dark">
           <div className="capes-article__meta">
             <span className="capes-article__category">{insight.category}</span>
             <span className="capes-article__date">{formatDate(insight.date)}</span>
             <span className="capes-article__read-time">{insight.readTime} read</span>
           </div>
-          <h1 className="capes-article__heading">{insight.title}</h1>
+          <h1 className="capes-article__heading" ref={heroHeadingRef as React.Ref<HTMLHeadingElement>}>{insight.title}</h1>
         </header>
 
         {/* Content */}
-        <div className="capes-article__content">
+        <div className="capes-article__content" data-section-theme="light">
           {showContent ? (
             <ArticleBody content={insight.content} />
           ) : (
@@ -552,9 +592,9 @@ function CapesArticle({ slug }: { slug: string }) {
 
         {/* Related */}
         {related.length > 0 && (
-          <section className="capes-article__related">
+          <section className="capes-article__related" data-section-theme="light">
             <h2 className="capes-article__related-heading">Related Insights</h2>
-            <div className="capes-article__related-grid">
+            <div className="capes-article__related-grid" ref={relatedGridRef}>
               {related.map((r) => (
                 <RelatedCard key={r.slug} insight={r} />
               ))}

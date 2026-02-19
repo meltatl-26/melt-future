@@ -1,0 +1,35 @@
+.melt-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.melt-logo__text {
+  font-family: var(--font-headline);
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  transition: color 0.3s var(--ease-out);
+}
+
+.melt-logo--default .melt-logo__text {
+  color: var(--navy);
+}
+
+.melt-logo--white .melt-logo__text {
+  color: var(--white);
+}
+
+.melt-logo--icon {
+  width: 40px;
+  height: 40px;
+}
+
+.melt-logo__text:hover {
+  color: var(--lime-green);
+}
+
+.melt-logo--white .melt-logo__text:hover {
+  color: var(--cyan);
+}

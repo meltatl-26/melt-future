@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { VersionToggle } from '@/components/shared/VersionToggle';
+import './HandcraftedHeader.css';
 
 export function HandcraftedHeader() {
   return (

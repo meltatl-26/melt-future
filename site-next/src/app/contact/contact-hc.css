@@ -5,8 +5,8 @@
 
 .hc-contact {
   min-height: 100vh;
-  background: var(--color-black);
-  color: var(--color-white);
+  background: var(--black);
+  color: var(--white);
 }
 
 /* Hero */
@@ -17,7 +17,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: var(--space-4xl) var(--grid-gutter) var(--space-2xl);
+  padding: var(--space-3xl) var(--gutter) var(--space-2xl);
 }
 
 .hc-contact__hero-title {
@@ -27,7 +27,7 @@
   text-transform: uppercase;
   line-height: 0.9;
   letter-spacing: 0.04em;
-  color: var(--color-white);
+  color: var(--white);
 }
 
 .hc-contact__hero-subtitle {
@@ -42,7 +42,7 @@
 .hc-contact__form-section {
   max-width: 680px;
   margin: 0 auto;
-  padding: 0 var(--grid-gutter) var(--space-4xl);
+  padding: 0 var(--gutter) var(--space-3xl);
 }
 
 .hc-contact__form {
@@ -85,12 +85,12 @@
   background: transparent;
   border: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-  color: var(--color-white);
+  color: var(--white);
   font-family: 'Satoshi', sans-serif;
   font-size: 1rem;
   padding: var(--space-sm) 0;
   outline: none;
-  transition: border-color var(--duration-fast) var(--ease-default);
+  transition: border-color 0.2s var(--ease-custom);
   width: 100%;
   border-radius: 0;
   -webkit-appearance: none;
@@ -104,7 +104,7 @@
 .hc-contact__field input:focus,
 .hc-contact__field select:focus,
 .hc-contact__field textarea:focus {
-  border-bottom-color: var(--color-royal-blue);
+  border-bottom-color: var(--royal-blue);
 }
 
 .hc-contact__field select {
@@ -112,8 +112,8 @@
 }
 
 .hc-contact__field select option {
-  background: var(--color-gray-900);
-  color: var(--color-white);
+  background: var(--gray-900);
+  color: var(--white);
 }
 
 .hc-contact__field textarea {
@@ -128,16 +128,16 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: var(--color-white);
+  color: var(--white);
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.3);
   padding: var(--space-md) var(--space-2xl);
   cursor: pointer;
-  transition: all var(--duration-normal) var(--ease-default);
+  transition: all 0.6s var(--ease-custom);
 }
 
 .hc-contact__submit:hover:not(:disabled) {
-  border-color: var(--color-white);
+  border-color: var(--white);
   background: rgba(255, 255, 255, 0.04);
 }
 
@@ -160,7 +160,7 @@
 }
 
 .hc-contact__status--error {
-  color: var(--color-coral);
+  color: var(--coral);
   border: 1px solid rgba(255, 64, 64, 0.2);
   background: rgba(255, 64, 64, 0.05);
 }
@@ -174,7 +174,7 @@
 .hc-contact__info-inner {
   max-width: 680px;
   margin: 0 auto;
-  padding: 0 var(--grid-gutter);
+  padding: 0 var(--gutter);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -210,11 +210,11 @@
 }
 
 .hc-contact__info-value a {
-  transition: color var(--duration-fast) var(--ease-default);
+  transition: color 0.2s var(--ease-custom);
 }
 
 .hc-contact__info-value a:hover {
-  color: var(--color-white);
+  color: var(--white);
 }
 
 /* Scoper link */
@@ -239,12 +239,12 @@
   color: rgba(255, 255, 255, 0.5);
   padding-bottom: 2px;
   border-bottom: 1px solid transparent;
-  transition: all var(--duration-fast) var(--ease-default);
+  transition: all 0.2s var(--ease-custom);
 }
 
 .hc-contact__scoper-link:hover {
-  color: var(--color-white);
-  border-bottom-color: var(--color-royal-blue);
+  color: var(--white);
+  border-bottom-color: var(--royal-blue);
 }
 
 /* Success state */
@@ -255,7 +255,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: var(--space-4xl) var(--grid-gutter);
+  padding: var(--space-3xl) var(--gutter);
 }
 
 .hc-contact__success-title {
@@ -264,7 +264,7 @@
   font-weight: 900;
   text-transform: uppercase;
   line-height: 0.95;
-  color: var(--color-white);
+  color: var(--white);
   margin-bottom: var(--space-lg);
 }
 

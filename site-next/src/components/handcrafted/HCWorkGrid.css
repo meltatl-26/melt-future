@@ -1,0 +1,167 @@
+/* =============================================
+   HC Work Grid — 4 cards, monochrome-to-color
+   ============================================= */
+
+.hc-work-grid {
+  background: var(--black);
+  padding: var(--space-3xl) 0 var(--space-2xl);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.hc-work-grid__inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+/* Heading */
+.hc-work-grid__heading-wrap {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.hc-work-grid__heading {
+  font-family: 'Industry', sans-serif;
+  font-size: clamp(2rem, 6vw, 5rem);
+  font-weight: 900;
+  color: var(--white);
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  line-height: 0.95;
+}
+
+.hc-work-grid__hash {
+  color: rgba(255, 255, 255, 0.15);
+  font-weight: 400;
+  font-size: 0.7em;
+}
+
+.hc-work-grid__sub {
+  font-family: 'Satoshi', sans-serif;
+  font-size: var(--eyebrow);
+  color: rgba(255, 255, 255, 0.25);
+  letter-spacing: 0.08em;
+  padding-bottom: 0.3em;
+  white-space: nowrap;
+}
+
+/* 2x2 grid */
+.hc-work-grid__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-sm);
+}
+
+/* Card */
+.hc-work-grid__card {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.hc-work-grid__card-image-wrap {
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  position: relative;
+}
+
+.hc-work-grid__card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Monochrome system — default desaturated */
+  filter: saturate(0%);
+  transition: filter 0.6s var(--ease-custom), transform 0.6s var(--ease-custom);
+}
+
+.hc-work-grid__card:hover .hc-work-grid__card-image {
+  filter: saturate(100%);
+  transform: scale(1.03);
+}
+
+.hc-work-grid__card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Card info — slides up on hover */
+.hc-work-grid__card-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-md);
+  transform: translateY(10px);
+  opacity: 0;
+  transition: transform 0.4s var(--ease-custom), opacity 0.4s var(--ease-custom);
+}
+
+.hc-work-grid__card:hover .hc-work-grid__card-info {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.hc-work-grid__card-client {
+  font-family: 'Industry', sans-serif;
+  font-size: var(--eyebrow);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 4px;
+}
+
+.hc-work-grid__card-title {
+  font-family: 'Industry', sans-serif;
+  font-size: clamp(0.9rem, 1.5vw, 1.25rem);
+  font-weight: 900;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+
+/* CTA */
+.hc-work-grid__cta-wrap {
+  text-align: right;
+  margin-top: var(--space-xl);
+}
+
+.hc-work-grid__cta {
+  font-family: 'Industry', sans-serif;
+  font-size: var(--nav);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.hc-work-grid__cta:hover {
+  color: var(--white);
+}
+
+@media (max-width: 599px) {
+  .hc-work-grid__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hc-work-grid__heading-wrap {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-xs);
+  }
+
+  .hc-work-grid__card-info {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

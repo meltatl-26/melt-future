@@ -18,7 +18,7 @@ export function CapesServicesWheel() {
   };
 
   return (
-    <section className="capes-wheel">
+    <section className="capes-wheel grain" data-section-theme="dark">
       <div className="capes-wheel__inner container">
         <div className="capes-wheel__header">
           <span className="capes-wheel__label">What We Do</span>
@@ -62,8 +62,8 @@ export function CapesServicesWheel() {
                   >
                     <path
                       d={`M ${ix2} ${iy2} L ${x1} ${y1} A ${r} ${r} 0 0 1 ${x2} ${y2} L ${ix1} ${iy1} A ${innerR} ${innerR} 0 0 0 ${ix2} ${iy2}`}
-                      fill={isActive ? service.color : 'var(--color-gray-100)'}
-                      stroke="white"
+                      fill={isActive ? service.color : 'rgba(255,255,255,0.08)'}
+                      stroke="rgba(255,255,255,0.15)"
                       strokeWidth="2"
                       style={{ transition: 'fill 0.3s ease', cursor: 'pointer' }}
                     />
@@ -73,7 +73,7 @@ export function CapesServicesWheel() {
                       textAnchor="middle"
                       dominantBaseline="middle"
                       className="capes-wheel__wedge-label"
-                      fill={isActive ? 'var(--color-black)' : 'var(--color-gray-500)'}
+                      fill={isActive ? 'var(--white)' : 'rgba(255,255,255,0.4)'}
                       style={{ fontSize: '11px', fontWeight: 700, pointerEvents: 'none' }}
                     >
                       {service.number}
@@ -82,7 +82,7 @@ export function CapesServicesWheel() {
                 );
               })}
               {/* Center circle */}
-              <circle cx="200" cy="200" r="55" fill="var(--color-navy)" />
+              <circle cx="200" cy="200" r="55" fill="var(--navy)" />
               <text
                 x="200"
                 y="195"

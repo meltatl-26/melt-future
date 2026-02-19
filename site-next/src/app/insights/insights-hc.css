@@ -5,21 +5,21 @@
 
 .hc-insights {
   min-height: 100vh;
-  background: var(--color-black);
-  color: var(--color-white);
-  padding: var(--space-4xl) 0;
+  background: var(--black);
+  color: var(--white);
+  padding: var(--space-3xl) 0;
 }
 
 .hc-insights__inner {
-  max-width: var(--container-max);
+  max-width: var(--container);
   margin: 0 auto;
-  padding: 0 var(--grid-gutter);
+  padding: 0 var(--gutter);
 }
 
 /* Hero */
 .hc-insights__hero {
   text-align: center;
-  margin-bottom: var(--space-4xl);
+  margin-bottom: var(--space-3xl);
   padding-bottom: var(--space-3xl);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
@@ -41,7 +41,7 @@
   font-weight: 900;
   text-transform: uppercase;
   line-height: 0.95;
-  color: var(--color-white);
+  color: var(--white);
   margin-bottom: var(--space-md);
 }
 
@@ -55,7 +55,7 @@
 
 /* Featured article */
 .hc-insights__featured {
-  margin-bottom: var(--space-4xl);
+  margin-bottom: var(--space-3xl);
 }
 
 .hc-insights__featured-card {
@@ -63,7 +63,7 @@
   padding: var(--space-3xl);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-sm);
-  transition: all var(--duration-normal) var(--ease-default);
+  transition: all 0.6s var(--ease-custom);
   position: relative;
   overflow: hidden;
 }
@@ -80,7 +80,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  color: var(--color-royal-blue);
+  color: var(--royal-blue);
   margin-bottom: var(--space-lg);
 }
 
@@ -101,7 +101,7 @@
   font-weight: 900;
   text-transform: uppercase;
   line-height: 1.05;
-  color: var(--color-white);
+  color: var(--white);
   margin-bottom: var(--space-md);
   max-width: 700px;
 }
@@ -150,7 +150,7 @@
   padding: var(--space-xl);
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: var(--radius-sm);
-  transition: all var(--duration-normal) var(--ease-default);
+  transition: all 0.6s var(--ease-custom);
   position: relative;
 }
 
@@ -193,7 +193,7 @@
   font-weight: 800;
   text-transform: uppercase;
   line-height: 1.15;
-  color: var(--color-white);
+  color: var(--white);
   margin-bottom: var(--space-sm);
 }
 
@@ -218,7 +218,7 @@
 }
 
 .hc-insights__card-tier {
-  color: var(--color-royal-blue);
+  color: var(--royal-blue);
   opacity: 0.6;
 }
 

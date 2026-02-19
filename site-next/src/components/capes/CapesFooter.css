@@ -1,0 +1,96 @@
+/* ==========================================================================
+   CapesFooter — Navy bg, grain overlay, CTA + 4-col grid + bottom bar
+   ========================================================================== */
+
+.footer {
+  padding-top: var(--space-2xl);
+  position: relative;
+}
+
+/* --- CTA Section --- */
+.footer__cta {
+  text-align: center;
+  padding-bottom: var(--space-2xl);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer__cta h2 {
+  font-family: var(--font-headline);
+  margin-bottom: var(--space-lg);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* --- 4-Column Grid --- */
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1.5fr 1fr;
+  gap: var(--gutter);
+  padding: var(--space-xl) 0;
+}
+
+.footer__col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+/* --- Brand details (col 1) --- */
+.footer__detail {
+  color: var(--gray-300);
+  font-family: var(--font-body);
+  font-size: var(--caption);
+}
+
+/* --- Column titles --- */
+.footer__col-title {
+  font-family: var(--font-headline);
+  font-size: var(--caption);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--lime-green);
+  margin-bottom: var(--space-xs);
+}
+
+/* --- Links --- */
+.footer__link {
+  color: var(--gray-300);
+  font-size: var(--caption);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer__link:hover {
+  color: var(--white);
+}
+
+/* --- Bottom Bar --- */
+.footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-md) 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: var(--caption);
+  color: var(--gray-300);
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 991px) {
+  .footer__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+  }
+}
+
+@media (max-width: 767px) {
+  .footer__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+}
