@@ -4,9 +4,9 @@ import './HCStatsBar.css';
 
 const STATS = [
   { value: '26+', label: 'Years Executing' },
-  { value: '10K+', label: 'Events Produced' },
-  { value: '18', label: 'Final Fours' },
-  { value: '22yr', label: 'Coca-Cola' },
+  { value: '5,000+', label: 'Activations Produced' },
+  { value: '47.4M', label: 'TV Viewers' },
+  { value: '$10M+', label: 'Avg. Annual Partnership' },
 ];
 
 export function HCStatsBar() {

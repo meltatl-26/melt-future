@@ -11,10 +11,10 @@ import './CapesStats.css';
 gsap.registerPlugin(ScrollTrigger);
 
 const stats = [
-  { target: 26, label: 'Years Executing', suffix: '' },
-  { target: 10000, label: 'Events Produced', suffix: '+' },
+  { target: 26, label: 'Years Executing', suffix: '+' },
+  { target: 5000, label: 'Activations Produced', suffix: '+' },
+  { target: 47, label: 'Million TV Viewers', suffix: 'M' },
   { target: 19, label: 'Final Fours', suffix: '' },
-  { target: 40, label: 'Industry Awards', suffix: '+' },
 ];
 
 export function CapesStats() {

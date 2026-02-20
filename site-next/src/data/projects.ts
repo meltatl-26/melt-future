@@ -49,6 +49,7 @@ export interface Project {
   tier: 'flagship' | 'standard' | 'light';
   industry: string;
   testimonial?: Testimonial;
+  talent?: string[];
 }
 
 // ---------------------------------------------------------------------------
@@ -89,10 +90,11 @@ const projects: Project[] = [
     ],
     stats: [
       { label: 'Program Impressions', value: '2.76M' },
-      { label: 'Campus Events', value: '112' },
+      { label: 'TV Viewers (2022)', value: '47.4M' },
       { label: 'Years Executing', value: '19+' },
-      { label: 'Cans Distributed Live', value: '39,360' },
+      { label: 'Samples Distributed', value: '100K+' },
     ],
+    talent: ['Taylor Swift', 'Ludacris', 'Carrie Underwood', 'Fergie', 'Big Boi', 'Maroon 5', 'Black Eyed Peas', 'Slash', 'CeeLo Green'],
     tags: [
       'NCAA Sponsorship',
       'Sampling',
@@ -1100,20 +1102,31 @@ const projects: Project[] = [
   },
 
   // ==========================================================================
-  // LIGHT: MELTU
+  // FLAGSHIP: Melt U
   // ==========================================================================
   {
     slug: 'meltu',
-    title: 'MELTU',
-    category: 'Consulting',
-    stat: 'Mentoring Young Marketers',
+    title: 'Melt U',
+    category: 'Branded Content',
+    stat: '5+ Years of Industry Education',
     thumbnail: '/images/work/meltu.webp',
     description:
-      'Programming, Training and Mentorship Programs For College Students. Melt has consistently mentored young marketers through internships, podcasts, lectures and work experience.',
+      "Melt's internal university — training the next generation of experiential marketers through mentorship, programming, and a YouTube channel featuring industry legends.",
+    longDescription:
+      "Melt U is more than a training program — it's a content property, a YouTube channel, and a platform that has connected hundreds of students and young professionals to the leaders shaping experiential marketing. Over 5+ years, Melt U has produced original video content featuring conversations with CMOs, event producers, and sports marketing executives from the NFL, NBA, Coca-Cola, and more. The YouTube channel at @meltu6893 serves as a permanent archive of industry wisdom, while the live programming has run on college campuses and at industry events. Greg Sankey, Rece Davis, Geoff Cottrill, Steve Phelps — these are the voices Melt U has brought into classrooms and living rooms. The program stands as proof that Melt doesn't just execute campaigns; it shapes the culture of experiential marketing itself.",
     brief:
-      'Mentorship and training programs connecting college students to industry leaders.',
-    services: ['Programming', 'Training', 'Mentorship'],
-    tags: ['College Marketing', 'Youth Marketing', 'Content Creation'],
+      'Melt U is a branded educational content platform and YouTube channel training the next generation of experiential marketers.',
+    challenge:
+      'Young marketers entering experiential had no structured curriculum — most learning happened on the job, years in. Melt saw the gap.',
+    approach:
+      'MELT built an internal university structure with recorded interviews, live campus programming, and a YouTube channel that puts industry leaders in front of aspiring marketers at scale.',
+    services: ['Branded Content', 'Video Production', 'Programming', 'Talent Management', 'Content Creation'],
+    stats: [
+      { label: 'Years Running', value: '5+' },
+      { label: 'Industry Leaders Featured', value: '20+' },
+      { label: 'Platform', value: 'YouTube Channel' },
+    ],
+    tags: ['Branded Content', 'Video Production', 'College Marketing', 'Youth Marketing', 'Content Creation', 'Education'],
     client: 'MELT',
     year: '2017–Present',
     location: 'Atlanta, GA',
@@ -1130,9 +1143,10 @@ const projects: Project[] = [
     featured: false,
     layout: 'C',
     accentColor: '--yellow',
-    contentSource: 'capes',
-    tier: 'light',
+    contentSource: 'reference',
+    tier: 'flagship',
     industry: 'Education / Marketing',
+    talent: ['Greg Sankey', 'Rece Davis', 'Geoff Cottrill', 'Steve Phelps', 'Todd Harris'],
   },
 
   // ==========================================================================
@@ -1260,6 +1274,256 @@ const projects: Project[] = [
     contentSource: 'v2-legacy+wordpress',
     tier: 'light',
     industry: 'Sports / Collegiate',
+  },
+
+  // ==========================================================================
+  // STANDARD: SEC BeachFest
+  // ==========================================================================
+  {
+    slug: 'sec-beachfest',
+    title: 'SEC BeachFest',
+    category: 'Experiential',
+    stat: '8,500 Fans at the Beach',
+    thumbnail: '/images/work/placeholder.webp',
+    description:
+      'MELT brought the SEC to the beach — an ESPN-featured fan festival headlined by Nick Saban, Gene Chizik, and Les Miles. 8,500 fans turned Gulf Shores into college football\'s most unexpected venue.',
+    longDescription:
+      'When the SEC wanted to take their brand to the Gulf Coast, MELT produced SEC BeachFest — a landmark fan experience that brought 8,500 football fanatics to the beaches of Gulf Shores, Alabama. The event featured live appearances from coaching legends Nick Saban, Gene Chizik, and Les Miles, drew ESPN\'s full production team for an ESPNU special broadcast, and delivered beach volleyball, fan competitions, and a full activation footprint that proved college football culture thrives 365 days a year. MELT handled everything from venue negotiation and talent logistics to broadcast coordination and on-site activation management.',
+    brief:
+      '8,500-fan SEC football beach festival with ESPNU broadcast and coaching legend appearances.',
+    challenge:
+      'The SEC needed a marquee off-season event that could generate national media attention and prove the conference\'s cultural reach beyond the football season.',
+    approach:
+      'MELT produced a full-scale fan festival on Gulf Shores beach — securing three head coaching legends, coordinating ESPN broadcast production, and delivering a sponsor activation footprint that made headlines.',
+    services: ['Event Production', 'Talent Management', 'Custom Activation Build', 'Content Creation', 'Sponsorship'],
+    stats: [
+      { label: 'Fans Attended', value: '8,500' },
+      { label: 'Broadcast', value: 'ESPNU Special' },
+      { label: 'Head Coaches Featured', value: '3' },
+    ],
+    tags: ['Event Production', 'Sports Marketing', 'Talent Management', 'College Marketing', 'Sponsorship', 'Activation'],
+    client: 'SEC / Gulf Shores & Orange Beach Tourism',
+    year: '2013',
+    location: 'Gulf Shores, AL',
+    gallery: [],
+    featured: false,
+    layout: 'B',
+    accentColor: '--cyan',
+    contentSource: 'reference',
+    tier: 'standard',
+    industry: 'Sports / Entertainment',
+    talent: ['Nick Saban', 'Gene Chizik', 'Les Miles'],
+  },
+
+  // ==========================================================================
+  // STANDARD: Full Throttle NHRA TV
+  // ==========================================================================
+  {
+    slug: 'full-throttle-nhra',
+    title: 'Full Throttle NHRA TV',
+    category: 'Social & Content',
+    stat: '50+ Episodes, 26M Homes',
+    thumbnail: '/images/work/placeholder.webp',
+    description:
+      'MELT produced a custom branded TV series integrating Full Throttle energy drink into the heart of NHRA drag racing — 50+ episodes reaching 26 million homes.',
+    brief:
+      'Custom branded television series pairing Full Throttle with NHRA drag racing — 50+ episodes, 26M homes reached.',
+    challenge:
+      'Full Throttle needed content that authentically lived inside motorsports culture rather than interrupting it with traditional advertising.',
+    approach:
+      'MELT produced an original branded series built around NHRA drag racing, embedding Full Throttle into race-day storytelling across an entire broadcast season.',
+    services: ['Video Production', 'TV Programming', 'Branded Content', 'Content Creation'],
+    stats: [
+      { label: 'Episodes Produced', value: '50+' },
+      { label: 'Homes Reached', value: '26M' },
+      { label: 'Format', value: 'Custom Branded Series' },
+    ],
+    tags: ['TV Programming', 'Branded Content', 'Content Creation', 'Sports Marketing', 'Video Production', 'Motorsports'],
+    client: 'Full Throttle / Coca-Cola',
+    year: '2006–2010',
+    location: 'Nationwide / NHRA Circuits',
+    gallery: [],
+    featured: false,
+    layout: 'A',
+    accentColor: '--coral',
+    contentSource: 'reference',
+    tier: 'standard',
+    industry: 'CPG / Beverages',
+  },
+
+  // ==========================================================================
+  // STANDARD: Pasqually's CFB Influencer Campaign
+  // ==========================================================================
+  {
+    slug: 'pasqualys-cfb',
+    title: "Pasqually's CFB Influencer",
+    category: 'Social & Content',
+    stat: '1,043% Influencer ROI',
+    thumbnail: '/images/work/placeholder.webp',
+    description:
+      "MELT delivered a 1,043% ROI on Pasqually's Pizza & Wings college football influencer campaign, leveraging NIL athletes and student creators to drive brand awareness across key markets.",
+    brief:
+      "1,043% ROI NIL influencer campaign for Pasqually's Pizza & Wings during college football season.",
+    challenge:
+      "Pasqually's needed to break through in a crowded QSR space with a college football audience that had never heard of the brand.",
+    approach:
+      'MELT built a creator network combining NIL student-athletes and campus influencers, producing authentic college football content that made Pasqually\'s feel native to game-day culture.',
+    services: ['Social Media Management', 'Influencer Marketing', 'Content Creation', 'NIL Partnerships'],
+    stats: [
+      { label: 'Influencer ROI', value: '1,043%' },
+      { label: 'Strategy', value: 'NIL + Student Creators' },
+      { label: 'Activation', value: 'College Football' },
+    ],
+    tags: ['NIL Partnerships', 'Influencer Marketing', 'Social Media Strategy', 'College Marketing', 'Content Creation'],
+    client: "Pasqually's / CEC Entertainment",
+    year: '2023',
+    location: 'Nationwide',
+    gallery: [],
+    featured: false,
+    layout: 'C',
+    accentColor: '--lime-green',
+    contentSource: 'reference',
+    tier: 'standard',
+    industry: 'QSR / Food & Beverage',
+  },
+
+  // ==========================================================================
+  // FLAGSHIP: Coca-Cola March Madness Music Festival
+  // ==========================================================================
+  {
+    slug: 'coca-cola-march-madness',
+    title: 'Coca-Cola March Madness Music Festival',
+    category: 'Events',
+    stat: 'Taylor Swift. Ludacris. Carrie Underwood.',
+    thumbnail: '/images/work/placeholder.webp',
+    description:
+      "MELT pioneered the first-ever March Madness Music Festival in 2003 — transforming Final Four weekend into a cultural destination with 10+ concerts headlined by Taylor Swift, Ludacris, Carrie Underwood, and more.",
+    longDescription:
+      "The March Madness Music Festival was born from MELT's belief that the Final Four could become a 4-day cultural destination — not just a basketball tournament. Beginning in 2003, MELT produced and managed the festival on behalf of Coca-Cola and the NCAA, growing it from a local celebration into one of the most anticipated events in college sports. Over its run, the festival headlined the biggest names in music: Taylor Swift, Ludacris, Carrie Underwood, Fergie, Big Boi, Maroon 5, Black Eyed Peas, Slash, and CeeLo Green. More than 100,000 product samples were distributed at festival grounds each year. MELT handled artist booking, venue negotiation, on-site production, and brand integration — delivering an event that commanded national media coverage and defined March Madness culture for a decade.",
+    brief:
+      'Created and produced the March Madness Music Festival for Coca-Cola and the NCAA — 10+ concerts, A-list talent, 100K+ samples per event.',
+    challenge:
+      'The Final Four drew fans for one weekend then emptied the host city. Coca-Cola and the NCAA needed an anchor event that would extend the cultural footprint of March Madness beyond the games themselves.',
+    approach:
+      'MELT created the March Madness Music Festival from scratch — producing multi-night concerts at premier venues in each host city, integrating Coca-Cola sampling and brand experiences throughout the festival grounds.',
+    services: ['Event Production', 'Talent Management', 'Sampling', 'Activation', 'Content Creation', 'NCAA Sponsorship'],
+    stats: [
+      { label: 'Concerts Produced', value: '10+' },
+      { label: 'Samples Per Event', value: '100K+' },
+      { label: 'Years Running', value: '10+' },
+    ],
+    tags: ['Music Events', 'Event Production', 'Talent Management', 'Sampling', 'Activation', 'NCAA Sponsorship', 'Sports Marketing'],
+    client: 'Coca-Cola / NCAA',
+    year: '2003–2013',
+    location: 'Multiple Final Four Host Cities',
+    gallery: [],
+    featured: false,
+    layout: 'A',
+    accentColor: '--lime-green',
+    contentSource: 'reference',
+    tier: 'flagship',
+    industry: 'Sports / Entertainment',
+    talent: ['Taylor Swift', 'Ludacris', 'Carrie Underwood', 'Fergie', 'Big Boi', 'Maroon 5', 'Black Eyed Peas', 'Slash', 'CeeLo Green'],
+  },
+
+  // ==========================================================================
+  // STANDARD: Gildan × Blake Shelton Tour
+  // ==========================================================================
+  {
+    slug: 'gildan-blake-shelton',
+    title: 'Gildan × Blake Shelton Tour',
+    category: 'Experiential',
+    stat: 'Multi-Year National Tour Integration',
+    thumbnail: '/images/work/placeholder.webp',
+    description:
+      "MELT integrated Gildan into Blake Shelton's national concert tour — activating brand experiences across multi-year tour stops and creating authentic connections between apparel and country music culture.",
+    brief:
+      "Multi-year Gildan brand activation embedded into Blake Shelton's national concert tour.",
+    services: ['Event Experiential', 'Talent Management', 'Activation', 'Sampling', 'Branded Content'],
+    stats: [
+      { label: 'Tour Type', value: 'Multi-Year National' },
+      { label: 'Integration', value: 'Apparel + Music' },
+      { label: 'Artist', value: 'Blake Shelton' },
+    ],
+    tags: ['Talent Management', 'Event Sponsorship', 'Brand Experiences', 'Music Events', 'Content Creation', 'Activation'],
+    client: 'Gildan',
+    year: '2014–2016',
+    location: 'Nationwide Tour',
+    gallery: [],
+    featured: false,
+    layout: 'B',
+    accentColor: '--yellow',
+    contentSource: 'reference',
+    tier: 'standard',
+    industry: 'Apparel / Fashion',
+    talent: ['Blake Shelton'],
+  },
+
+  // ==========================================================================
+  // STANDARD: State Farm Fiesta Atlanta
+  // ==========================================================================
+  {
+    slug: 'state-farm-fiesta',
+    title: 'State Farm Fiesta Atlanta',
+    category: 'Experiential',
+    stat: '554 Qualified Leads, 30K Attendees',
+    thumbnail: '/images/work/placeholder.webp',
+    description:
+      "MELT activated State Farm at Fiesta Atlanta, a 30,000-attendee Latino cultural festival, capturing 554 qualified insurance leads through a custom-built interactive experience.",
+    brief:
+      '554 qualified insurance leads captured at a 30,000-attendee Latino cultural festival for State Farm.',
+    challenge:
+      "State Farm needed an authentic presence in Atlanta's Latino community that would generate measurable leads while building genuine brand affinity.",
+    approach:
+      'MELT built a custom interactive activation at Fiesta Atlanta, combining entertainment with a data-capture experience that produced 554 qualified leads in a single day.',
+    services: ['Custom Activation Build', 'Sampling', 'Content Creation', 'Data Capture'],
+    stats: [
+      { label: 'Qualified Leads', value: '554' },
+      { label: 'Festival Attendees', value: '30K' },
+      { label: 'Lead Capture Method', value: 'Interactive Activation' },
+    ],
+    tags: ['Event Experiential', 'Brand Experiences', 'Multicultural Marketing', 'Lead Generation', 'Custom Builds'],
+    client: 'State Farm',
+    year: '2018',
+    location: 'Atlanta, GA',
+    gallery: [],
+    featured: false,
+    layout: 'C',
+    accentColor: '--royal-blue',
+    contentSource: 'reference',
+    tier: 'standard',
+    industry: 'Insurance / Financial Services',
+  },
+
+  // ==========================================================================
+  // STANDARD: Bud Light College Football
+  // ==========================================================================
+  {
+    slug: 'bud-light-cfb',
+    title: 'Bud Light College Football',
+    category: 'Experiential',
+    stat: 'Multi-Year College Football Activation',
+    thumbnail: '/images/work/placeholder.webp',
+    description:
+      "Multi-year experiential marketing program activating Bud Light across college football's biggest games, campuses, and tailgate culture.",
+    brief:
+      'Multi-year Bud Light experiential program across college football campuses and marquee events.',
+    services: ['Sponsorship', 'Custom Activation Build', 'Multi-City Tour', 'Sampling'],
+    stats: [
+      { label: 'Program Type', value: 'Multi-Year' },
+      { label: 'Focus', value: 'College Football' },
+    ],
+    tags: ['Sports Marketing', 'College Marketing', 'Event Experiential', 'Campus Activations', 'Sampling', 'Sponsorship'],
+    client: 'Bud Light / Anheuser-Busch',
+    year: '2015–2018',
+    location: 'Nationwide',
+    gallery: [],
+    featured: false,
+    layout: 'A',
+    accentColor: '--navy',
+    contentSource: 'reference',
+    tier: 'standard',
+    industry: 'CPG / Beverages',
   },
 
   // LIGHT: Wingstop
